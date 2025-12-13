@@ -2275,36 +2275,8 @@ html {
 #get-in-touch {
     text-align: center;
     padding: 60px 0;
-    background: #0a0a1a;
+    background: none !important;
     position: relative;
-    overflow: hidden;
-}
-
-#get-in-touch::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        radial-gradient(2px 2px at 20% 30%, white, transparent),
-        radial-gradient(2px 2px at 60% 70%, white, transparent),
-        radial-gradient(1px 1px at 50% 50%, white, transparent),
-        radial-gradient(1px 1px at 80% 10%, white, transparent),
-        radial-gradient(2px 2px at 90% 60%, white, transparent),
-        radial-gradient(1px 1px at 33% 85%, white, transparent),
-        radial-gradient(2px 2px at 10% 90%, white, transparent);
-    background-size: 200% 200%;
-    background-position: 0% 0%;
-    opacity: 0.3;
-    z-index: 0;
-    pointer-events: none;
-}
-
-#get-in-touch .container {
-    position: relative;
-    z-index: 1;
 }
 
 .get-in-touch-title {

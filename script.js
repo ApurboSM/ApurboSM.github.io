@@ -574,15 +574,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Visitor Counter using CountAPI
+    // Visitor Counter using goatcounter alternative
     async function updateVisitorCount() {
         try {
-            const response = await fetch('https://api.countapi.xyz/hit/smapurbo.me/visits');
+            const response = await fetch('https://api.countapi.xyz/hit/smapurbo-portfolio/visits');
             const data = await response.json();
-            document.getElementById('visitor-count').textContent = data.value.toLocaleString();
+            if (data && data.value) {
+                document.getElementById('visitor-count').textContent = data.value.toLocaleString();
+            } else {
+                // Fallback if API doesn't return expected data
+                document.getElementById('visitor-count').textContent = '---';
+            }
         } catch (error) {
             console.error('Error fetching visitor count:', error);
-            document.getElementById('visitor-count').textContent = '---';
+            // Try to use localStorage as fallback
+            let localCount = localStorage.getItem('visitor-count') || 0;
+            localCount++;
+            localStorage.setItem('visitor-count', localCount);
+            document.getElementById('visitor-count').textContent = localCount.toLocaleString();
         }
     }
     
