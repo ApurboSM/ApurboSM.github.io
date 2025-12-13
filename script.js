@@ -574,24 +574,52 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Visitor Counter using goatcounter alternative
+    // Visitor Counter - Global persistent counter
     async function updateVisitorCount() {
+        const countElement = document.getElementById('visitor-count');
+        
         try {
-            const response = await fetch('https://api.countapi.xyz/hit/smapurbo-portfolio/visits');
-            const data = await response.json();
-            if (data && data.value) {
-                document.getElementById('visitor-count').textContent = data.value.toLocaleString();
-            } else {
-                // Fallback if API doesn't return expected data
-                document.getElementById('visitor-count').textContent = '---';
+            // Using CountAPI.xyz for global persistent counting
+            const namespace = 'smapurbo-portfolio';
+            const key = 'total-visits';
+            
+            // Hit the counter (increments and returns new value)
+            const response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+            
+            const data = await response.json();
+            
+            if (data && typeof data.value === 'number') {
+                countElement.textContent = data.value.toLocaleString();
+            } else {
+                throw new Error('Invalid response from counter API');
+            }
+            
         } catch (error) {
             console.error('Error fetching visitor count:', error);
-            // Try to use localStorage as fallback
-            let localCount = localStorage.getItem('visitor-count') || 0;
-            localCount++;
-            localStorage.setItem('visitor-count', localCount);
-            document.getElementById('visitor-count').textContent = localCount.toLocaleString();
+            
+            // Try alternative API endpoint
+            try {
+                const altResponse = await fetch('https://api.countapi.xyz/get/smapurbo-portfolio/total-visits');
+                const altData = await altResponse.json();
+                
+                if (altData && typeof altData.value === 'number') {
+                    countElement.textContent = altData.value.toLocaleString();
+                } else {
+                    countElement.textContent = '---';
+                }
+            } catch (altError) {
+                console.error('Alternative counter API also failed:', altError);
+                countElement.textContent = '---';
+            }
         }
     }
     
