@@ -573,4 +573,19 @@ document.addEventListener('DOMContentLoaded', function() {
             navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
         }
     });
+    
+    // Visitor Counter using CountAPI
+    async function updateVisitorCount() {
+        try {
+            const response = await fetch('https://api.countapi.xyz/hit/smapurbo.me/visits');
+            const data = await response.json();
+            document.getElementById('visitor-count').textContent = data.value.toLocaleString();
+        } catch (error) {
+            console.error('Error fetching visitor count:', error);
+            document.getElementById('visitor-count').textContent = '---';
+        }
+    }
+    
+    // Call the function to update visitor count
+    updateVisitorCount();
 }); 

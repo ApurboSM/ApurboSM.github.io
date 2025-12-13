@@ -2276,6 +2276,7 @@ html {
     text-align: center;
     padding: 60px 0;
     background: #000000;
+    position: relative;
 }
 
 .get-in-touch-title {
@@ -2339,6 +2340,49 @@ html {
     color: #9d4edd;
 }
 
+/* Visitor Counter Styles */
+.visitor-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(10, 10, 26, 0.95);
+    border: 2px solid rgba(157, 78, 221, 0.3);
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.visitor-counter:hover {
+    border-color: rgba(157, 78, 221, 0.6);
+    box-shadow: 0 8px 32px rgba(157, 78, 221, 0.3);
+    transform: translateY(-2px);
+}
+
+.visitor-counter i {
+    color: #9d4edd;
+    font-size: 1.2rem;
+}
+
+.visitor-counter #visitor-count {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    min-width: 50px;
+    text-align: center;
+}
+
+.visitor-counter .counter-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .get-in-touch-title {
@@ -2360,6 +2404,27 @@ html {
     .btn-schedule {
         width: 100%;
         justify-content: center;
+    }
+    
+    .visitor-counter {
+        bottom: 10px;
+        left: 10px;
+        padding: 8px 12px;
+        gap: 6px;
+        font-size: 0.85rem;
+    }
+    
+    .visitor-counter i {
+        font-size: 1rem;
+    }
+    
+    .visitor-counter #visitor-count {
+        font-size: 0.95rem;
+        min-width: 40px;
+    }
+    
+    .visitor-counter .counter-label {
+        font-size: 0.75rem;
     }
 }
 
