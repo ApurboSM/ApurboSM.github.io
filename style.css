@@ -2275,7 +2275,7 @@ html {
 #get-in-touch {
     text-align: center;
     padding: 60px 0;
-    background: none !important;
+    background: transparent;
     position: relative;
 }
 
