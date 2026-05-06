@@ -13,8 +13,8 @@ const links = [
   { href: '#process', label: 'Process', index: '02' },
   { href: '#about', label: 'About', index: '03' },
   { href: '#skills', label: 'Stack', index: '04' },
-  { href: '#experience', label: 'Career', index: '05' },
-  { href: '#contact', label: 'Contact', index: '06' },
+  { href: '#experience', label: 'Career', index: '06' },
+  { href: '#contact', label: 'Contact', index: '08' },
 ];
 
 export function Navbar() {
