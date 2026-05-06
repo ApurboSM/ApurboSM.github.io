@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'api.qrserver.com' },
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-    ],
+    unoptimized: true,
   },
 };
 

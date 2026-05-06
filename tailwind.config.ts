@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  darkMode: ['class'],
+  darkMode: ['class', '[data-theme="dark"]'],
   content: [
     './app/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -15,18 +15,17 @@ const config: Config = {
     },
     extend: {
       colors: {
-        bg:           '#0A0A0A',
-        surface:      '#111111',
-        'surface-2':  '#161616',
-        'surface-3':  '#1c1c1c',
-        line:         'rgba(255,255,255,0.08)',
-        'line-2':     'rgba(255,255,255,0.14)',
-        fg:           '#EDEDED',
-        'fg-muted':   'rgba(237,237,237,0.65)',
-        'fg-faint':   'rgba(237,237,237,0.4)',
-        accent:       '#6366F1',
-        'accent-hi':  '#818CF8',
-        success:      '#10B981',
+        bg:           'rgb(var(--bg) / <alpha-value>)',
+        surface:      'rgb(var(--surface) / <alpha-value>)',
+        'surface-2':  'rgb(var(--surface-2) / <alpha-value>)',
+        fg:           'rgb(var(--fg) / <alpha-value>)',
+        'fg-muted':   'rgb(var(--fg) / 0.65)',
+        'fg-faint':   'rgb(var(--fg) / 0.4)',
+        line:         'rgb(var(--fg) / 0.08)',
+        'line-2':     'rgb(var(--fg) / 0.14)',
+        accent:       'rgb(var(--accent) / <alpha-value>)',
+        'accent-hi':  'rgb(var(--accent-hi) / <alpha-value>)',
+        success:      'rgb(var(--success) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'Inter', 'system-ui', 'sans-serif'],

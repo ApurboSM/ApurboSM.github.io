@@ -4,6 +4,7 @@ import { GeistMono } from 'geist/font/mono';
 import './globals.css';
 import { Navbar } from '@/components/nav/navbar';
 import { Footer } from '@/components/nav/footer';
+import { ThemeProvider } from '@/components/theme-provider';
 import { site } from '@/lib/data/site';
 
 export const metadata: Metadata = {
@@ -53,10 +54,27 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0a0a0a',
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: light)', color: '#fafafa' },
+  ],
   width: 'device-width',
   initialScale: 1,
 };
+
+// Inline pre-paint script — sets data-theme before React hydrates,
+// preventing a flash of incorrect theme.
+const themeScript = `
+(function() {
+  try {
+    var stored = localStorage.getItem('apurbo:theme');
+    var theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -69,10 +87,15 @@ export default function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="bg-bg font-sans text-fg antialiased">
-        <Navbar />
-        <main className="relative">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="relative">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
