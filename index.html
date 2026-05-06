@@ -3,1173 +3,1143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S. M. Apurbo - Portfolio</title>
-    
+    <title>S. M. Apurbo — Full-Stack Developer & AI Engineer</title>
+    <meta name="description" content="S. M. Apurbo — Full-Stack Developer, AI/ML Engineer, and Computer Science student at BRAC University. Building innovative digital solutions.">
+
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6923029497898342"
-     crossorigin="anonymous"></script>
-    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6923029497898342" crossorigin="anonymous"></script>
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <link rel="shortcut icon" href="favicon.png">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=1.6">
-    
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- Typed.js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <!-- Empty space on left -->
-            <div class="navbar-brand-placeholder"></div>
-            
-            <!-- Right side icons -->
-            <div class="navbar-icons">
-                <!-- Card Icon -->
-                <a class="navbar-icon" href="card.html">
-                    <i class="fas fa-id-card"></i>
+
+    <!-- Page Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">&lt;SMA /&gt;</div>
+            <div class="loader-bar"><div class="loader-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="cursor"></div>
+    <div id="cursor-trail" class="cursor-trail"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">&lt;SMA /&gt;</a>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="card.html" class="nav-link nav-card-link">
+                    <i class="fas fa-id-card"></i> Card
                 </a>
-                
-                <!-- Hamburger Menu Button -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
             </div>
-            
-            <!-- Transparent Dropdown Menu -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">
-                            <i class="fas fa-home"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#profile">
-                            <i class="fas fa-user"></i>
-                            <span>Profile</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">
-                            <i class="fas fa-code"></i>
-                            <span>Skills</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#experience">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Experience</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">
-                            <i class="fas fa-project-diagram"></i>
-                            <span>Projects</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#client-projects">
-                            <i class="fas fa-briefcase"></i>
-                            <span>Client Projects</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#education">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Education</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#certifications">
-                            <i class="fas fa-certificate"></i>
-                            <span>Certifications</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#activities">
-                            <i class="fas fa-users"></i>
-                            <span>Activities</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">
-                            <i class="fas fa-envelope"></i>
-                            <span>Contact</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
+            <a href="mailto:sm.apurbo@g.bracu.ac.bd" class="btn-hire">
+                <span>Hire Me</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <!-- Space Background -->
-    <div class="space-background">
-        <!-- Stars -->
-        <div class="star small" style="top: 8%; left: 12%; animation-delay: 0s;"></div>
-        <div class="star medium" style="top: 18%; left: 78%; animation-delay: 1s;"></div>
-        <div class="star large" style="top: 28%; left: 22%; animation-delay: 2s;"></div>
-        <div class="star small" style="top: 38%; left: 68%; animation-delay: 0.5s;"></div>
-        <div class="star medium" style="top: 48%; left: 8%; animation-delay: 1.5s;"></div>
-        <div class="star small" style="top: 58%; left: 88%; animation-delay: 2.5s;"></div>
-        <div class="star large" style="top: 68%; left: 38%; animation-delay: 3s;"></div>
-        <div class="star medium" style="top: 78%; left: 58%; animation-delay: 0.8s;"></div>
-        <div class="star small" style="top: 88%; left: 18%; animation-delay: 1.8s;"></div>
-        <div class="star small" style="top: 3%; left: 48%; animation-delay: 2.2s;"></div>
-        <div class="star medium" style="top: 13%; left: 33%; animation-delay: 0.3s;"></div>
-        <div class="star small" style="top: 23%; left: 83%; animation-delay: 1.3s;"></div>
-        <div class="star large" style="top: 33%; left: 3%; animation-delay: 2.8s;"></div>
-        <div class="star small" style="top: 43%; left: 93%; animation-delay: 0.7s;"></div>
-        <div class="star medium" style="top: 53%; left: 43%; animation-delay: 1.7s;"></div>
-        <div class="star small" style="top: 63%; left: 73%; animation-delay: 2.3s;"></div>
-        <div class="star large" style="top: 73%; left: 13%; animation-delay: 0.9s;"></div>
-        <div class="star small" style="top: 83%; left: 53%; animation-delay: 1.9s;"></div>
-        <div class="star medium" style="top: 93%; left: 28%; animation-delay: 2.7s;"></div>
-        <div class="star small" style="top: 10%; left: 63%; animation-delay: 0.4s;"></div>
-        <div class="star medium" style="top: 35%; left: 85%; animation-delay: 1.1s;"></div>
-        <div class="star small" style="top: 55%; left: 25%; animation-delay: 2.1s;"></div>
-        <div class="star large" style="top: 75%; left: 65%; animation-delay: 0.6s;"></div>
-        <div class="star small" style="top: 95%; left: 45%; animation-delay: 1.6s;"></div>
-        <div class="star medium" style="top: 15%; left: 5%; animation-delay: 2.6s;"></div>
-
-        <!-- Planets -->
-        <div class="planet earth" style="top: 12%; left: 3%; animation-delay: 0s;"></div>
-        <div class="planet mars" style="top: 55%; left: 82%; animation-delay: 5s;"></div>
-        <div class="planet jupiter" style="top: 75%; left: 8%; animation-delay: 10s;"></div>
-
-        <!-- Nebula Clouds -->
-        <div class="nebula purple" style="top: 18%; left: 58%; width: 180px; height: 180px; animation-delay: 0s;"></div>
-        <div class="nebula blue" style="top: 65%; left: 18%; width: 140px; height: 140px; animation-delay: 8s;"></div>
-        <div class="nebula pink" style="top: 38%; left: 78%; width: 160px; height: 160px; animation-delay: 15s;"></div>
-
-        <!-- Comets (Reduced) -->
-        <div class="comet falling" style="top: 18%; left: -50px; animation-delay: 1s;"></div>
-        <div class="comet falling" style="top: 58%; left: -50px; animation-delay: 8s;"></div>
-
-        <!-- Shooting Stars -->
-        <div class="shooting-star" style="top: 22%; left: -50px; animation-delay: 2s;"></div>
-        <div class="shooting-star" style="top: 62%; left: -50px; animation-delay: 5s;"></div>
-        <div class="shooting-star" style="top: 82%; left: -50px; animation-delay: 8s;"></div>
-        <div class="shooting-star" style="top: 42%; left: -50px; animation-delay: 11s;"></div>
-
-        <!-- Moving Planets -->
-        <div class="moving-planet small earth" style="top: 25%; left: -60px; animation-delay: 2s;"></div>
-        <div class="moving-planet medium mars" style="top: 65%; right: -60px; animation-delay: 7s;"></div>
-        <div class="moving-planet large jupiter" style="top: 45%; left: -80px; animation-delay: 12s;"></div>
-        <div class="moving-planet small earth" style="top: 85%; right: -50px; animation-delay: 4s;"></div>
-    </div>
-
-    <!-- Dynamic Coming Towards Screen Elements -->
-    <div class="dynamic-space-element dynamic-star" style="top: 25%; left: 40%; animation-delay: 0s;"></div>
-    <div class="dynamic-space-element dynamic-star" style="top: 65%; left: 75%; animation-delay: 2s;"></div>
-    <div class="dynamic-space-element dynamic-star" style="top: 15%; left: 85%; animation-delay: 4s;"></div>
-    <div class="dynamic-space-element dynamic-star" style="top: 80%; left: 20%; animation-delay: 6s;"></div>
-    <div class="dynamic-space-element dynamic-star" style="top: 45%; left: 60%; animation-delay: 1s;"></div>
-    <div class="dynamic-space-element dynamic-star" style="top: 35%; left: 15%; animation-delay: 3s;"></div>
-    <div class="dynamic-space-element dynamic-star" style="top: 70%; left: 90%; animation-delay: 5s;"></div>
-    <div class="dynamic-space-element dynamic-star" style="top: 10%; left: 55%; animation-delay: 7s;"></div>
-
-    <div class="dynamic-space-element dynamic-planet small" style="top: 20%; left: 70%; animation-delay: 1s;"></div>
-    <div class="dynamic-space-element dynamic-planet medium" style="top: 60%; left: 30%; animation-delay: 4s;"></div>
-    <div class="dynamic-space-element dynamic-planet large" style="top: 85%; left: 80%; animation-delay: 7s;"></div>
-    <div class="dynamic-space-element dynamic-planet small" style="top: 40%; left: 10%; animation-delay: 10s;"></div>
-    <div class="dynamic-space-element dynamic-planet medium" style="top: 75%; left: 50%; animation-delay: 2s;"></div>
-
-
-
-    <!-- Add this at the start of body -->
-    <div class="loader-wrapper">
-        <div class="loader">
-            <div class="loader-ring"></div>
-            <div class="loader-ring"></div>
-            <div class="loader-ring"></div>
-            <div class="loader-ring"></div>
-            <div class="loader-core"></div>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
+    <!-- ═══════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════ -->
     <section id="home" class="hero">
-        <div class="container">
-            <div class="row align-items-center justify-content-center text-center">
-                <div class="col-12">
-                    <div class="hero-image mb-4">
-                        <img src="./hero.jpg" alt="S. M. Apurbo">
-                    </div>
-                    <h1>S. M. Apurbo</h1>
-                    <h2>I'm a <span class="typed-text"></span></h2>
-                    
-                    <div class="contact-info">
-                        <a href="tel:+8801311035024">
-                            <i class="fas fa-phone"></i>
-                            +880 131 103 5024
-                        </a>
-                        <a href="mailto:sm.apurbo@g.bracu.ac.bd">
-                            <i class="fas fa-envelope"></i>
-                            sm.apurbo@g.bracu.ac.bd
-                        </a>
-                    </div>
+        <div class="hero-bg">
+            <div class="hero-orb orb-1"></div>
+            <div class="hero-orb orb-2"></div>
+            <div class="hero-orb orb-3"></div>
+            <div class="hero-grid-overlay"></div>
+        </div>
 
-                    <div class="social-links">
-                        <a href="https://github.com/ApurboSM" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/s-m-apurbo-673581339/" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://facebook.com/smapurbo007" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-facebook"></i>
-                        </a>
+        <div class="hero-container">
+            <div class="hero-text">
+                <div class="hero-tag reveal-up">
+                    <span class="tag-dot"></span>
+                    <span>Available for opportunities</span>
+                </div>
+
+                <h1 class="hero-name reveal-up">
+                    S. M. <span class="name-accent">Apurbo</span>
+                </h1>
+
+                <div class="hero-role reveal-up">
+                    <span class="role-prefix">I build</span>
+                    <span class="typed-text" id="typed-hero"></span>
+                </div>
+
+                <p class="hero-bio reveal-up">
+                    Computer Science student at BRAC University, crafting AI-powered tools and full-stack applications. 
+                    Creator of Bangladesh's first AI background removal platform.
+                </p>
+
+                <div class="hero-cta reveal-up">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>View My Work</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">
+                        <span>Get In Touch</span>
+                    </a>
+                </div>
+
+                <div class="hero-socials reveal-up">
+                    <a href="https://github.com/ApurboSM" target="_blank" rel="noopener noreferrer" class="social-pill">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/s-m-apurbo-673581339/" target="_blank" rel="noopener noreferrer" class="social-pill">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://facebook.com/smapurbo007" target="_blank" rel="noopener noreferrer" class="social-pill">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal-right">
+                <div class="hero-image-frame">
+                    <div class="frame-ring ring-outer"></div>
+                    <div class="frame-ring ring-inner"></div>
+                    <div class="hero-image-wrapper">
+                        <img src="assets/images/hero.jpg" alt="S. M. Apurbo" class="hero-photo">
+                    </div>
+                    <div class="frame-badge badge-top">
+                        <i class="fas fa-code"></i>
+                        <span>Full-Stack Dev</span>
+                    </div>
+                    <div class="frame-badge badge-bottom">
+                        <i class="fas fa-brain"></i>
+                        <span>AI / ML</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <a href="#about" class="scroll-hint" aria-label="Scroll down">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </a>
     </section>
 
-    <!-- Profile Section -->
-    <section id="profile" class="section reveal">
+    <!-- ═══════════════════════════════════════
+         ABOUT SECTION
+    ═══════════════════════════════════════ -->
+    <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">Profile</h2>
-            <div class="profile-content">
-                <div class="bio-section">
-                    <p class="bio-text">
-                        Currently pursuing my Bachelor of Science in Computer Science and Engineering at BRAC University, I am always eager to apply my skills in real-world applications. As an executive member of the BRAC University Computer Club and a general member of the BRAC University Adventure Club, I actively engage in tech and extracurricular activities.
+            <div class="section-header reveal-up">
+                <span class="section-tag">About Me</span>
+                <h2 class="section-title">Who I Am</h2>
+            </div>
+
+            <div class="about-layout">
+                <div class="about-content reveal-left">
+                    <p class="about-lead">
+                        Currently pursuing my <strong>Bachelor of Science in Computer Science & Engineering</strong> at BRAC University — I'm passionate about engineering technology that makes a real impact.
                     </p>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <p>
+                        From building <strong>Bangladesh's first AI-powered background removal tool</strong>, to developing full-stack applications and contributing to cutting-edge data science initiatives — I bring a blend of technical precision and creative problem-solving to every challenge.
+                    </p>
+                    <p>
+                        As an Executive member of the BRAC University Computer Club (BUCC) and an active voice in the tech community, I believe in learning in public and building in community.
+                    </p>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section reveal">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <a href="https://www.python.org" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                            </a>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Dhaka, Bangladesh</span>
                         </div>
-                        <div class="skill-item">
-                            <a href="https://www.java.com" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-java"></i>
-                            <span>Java</span>
-                            </a>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:sm.apurbo@g.bracu.ac.bd">sm.apurbo@g.bracu.ac.bd</a>
                         </div>
-                        <div class="skill-item">
-                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-js"></i>
-                                <span>JavaScript</span>
-                            </a>
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+8801311035024">+880 131 103 5024</a>
                         </div>
-                        <div class="skill-item">
-                            <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-js-square"></i>
-                                <span>TypeScript</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-html5"></i>
-                                <span>HTML</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.php.net" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-php"></i>
-                                <span>PHP</span>
-                            </a>
+                        <div class="detail-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>BRAC University, CSE &mdash; 2022–2026</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3>Development</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-react"></i>
-                                <span>React</span>
-                            </a>
+                <div class="about-stats reveal-right">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">3+</div>
+                            <div class="stat-name">Years Experience</div>
                         </div>
-                        <div class="skill-item">
-                            <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-node-js"></i>
-                                <span>Node.js</span>
-                            </a>
+                        <div class="stat-card">
+                            <div class="stat-value">10+</div>
+                            <div class="stat-name">Projects Built</div>
                         </div>
-                        <div class="skill-item">
-                            <a href="https://www.djangoproject.com" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-python"></i>
-                                <span>Django</span>
-                            </a>
+                        <div class="stat-card">
+                            <div class="stat-value">3</div>
+                            <div class="stat-name">Active Roles</div>
                         </div>
-                        <div class="skill-item">
-                            <a href="https://flask.palletsprojects.com" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-vial"></i>
-                                <span>Flask</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-node"></i>
-                                <span>Express</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-vuejs"></i>
-                                <span>Vue.js</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-wind"></i>
-                                <span>Tailwind</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-bolt"></i>
-                                <span>Vite</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://gradle.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-project-diagram"></i>
-                                <span>Gradle</span>
-                            </a>
+                        <div class="stat-card">
+                            <div class="stat-value">25+</div>
+                            <div class="stat-name">Technologies</div>
                         </div>
                     </div>
-                </div>
 
-                <div class="skill-category">
-                    <h3>ML/DL</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <a href="https://www.tensorflow.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-brain"></i>
-                                <span>TensorFlow</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://pjreddie.com/darknet/yolo" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-eye"></i>
-                                <span>YOLO</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://pytorch.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-network-wired"></i>
-                                <span>CNN</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://pytorch.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-fire-alt"></i>
-                                <span>PyTorch</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://opencv.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-video"></i>
-                                <span>OpenCV</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.opengl.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-cube"></i>
-                                <span>OpenGL</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Database</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <a href="https://www.mysql.com" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-database"></i>
-                                <span>MySQL</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.mongodb.com" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-leaf"></i>
-                                <span>MongoDB</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://firebase.google.com" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-fire"></i>
-                                <span>Firebase</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-database"></i>
-                                <span>PostgreSQL</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Cloud & DevOps</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <a href="https://www.oracle.com/cloud/" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-cloud"></i>
-                                <span>Oracle Cloud</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.digitalocean.com/" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-water"></i>
-                                <span>DigitalOcean</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://render.com/" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-rocket"></i>
-                                <span>Render</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://railway.app/" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-train"></i>
-                                <span>Railway</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-layer-group"></i>
-                                <span>Netlify</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.heroku.com/" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-server"></i>
-                                <span>Heroku</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-aws"></i>
-                                <span>AWS</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Design</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <a href="https://www.autodesk.com/products/maya" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-photo-video"></i>
-                                <span>2D & 3D Animation</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-paint-brush"></i>
-                                <span>Photoshop</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-figma"></i>
-                                <span>Figma</span>
-                            </a>
-                        </div>
-                        <div class="skill-item">
-                            <a href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-pen-nib"></i>
-                                <span>Illustrator</span>
-                            </a>
-                        </div>
+                    <div class="availability-badge">
+                        <div class="avail-pulse"></div>
+                        <span>Open to full-time &amp; freelance opportunities</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Add this after the Skills section and before the Projects section -->
-    <section id="experience" class="section reveal">
+    <!-- ═══════════════════════════════════════
+         SKILLS SECTION
+    ═══════════════════════════════════════ -->
+    <section id="skills" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            
-            <!-- Greenosa Digital -->
-            <div class="experience-card">
-                <h3>Software Developer</h3>
-                <a href="https://www.linkedin.com/company/greenosa-digital" target="_blank" rel="noopener noreferrer" class="company-logo-link">
-                    <img src="greenosa.jpg" alt="Greenosa Digital Logo" class="company-logo">
-                </a>
-                <div class="company-info">
-                    <span class="company-name">Greenosa Digital</span>
-                    <span class="job-type">Remote</span>
-                </div>
-                <div class="experience-duration">
-                    <i class="far fa-calendar-alt"></i>
-                    <span>June 2025 - Present</span>
-                </div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Bangladesh's 1st ever DIGITAL Player and Playing Ground Finding and Match-making Platform</li>
-                        <li>Developing and implementing innovative software solutions for digital transformation initiatives</li>
-                        <li>Collaborating with cross-functional teams to deliver high-quality applications</li>
-                        <li>Utilizing modern development frameworks and best practices to ensure scalable and maintainable code</li>
-                    </ul>
-                </div>
+            <div class="section-header reveal-up">
+                <span class="section-tag">Technical Expertise</span>
+                <h2 class="section-title">Skills &amp; Technologies</h2>
             </div>
 
-            <!-- Nyntax -->
-            <div class="experience-card">
-                <h3>Data Preparation Associate</h3>
-                <a href="https://www.nyntax.com/" target="_blank" rel="noopener noreferrer" class="company-logo-link">
-                    <img src="nyntax.png" alt="Nyntax Logo" class="company-logo">
-                </a>
-                <div class="company-info">
-                    <span class="company-name">Nyntax</span>
-                    <span class="job-type">Hybrid</span>
+            <div class="skills-layout">
+                <div class="skill-group reveal-up">
+                    <div class="skill-group-label">
+                        <i class="fas fa-code"></i>
+                        <span>Programming Languages</span>
+                    </div>
+                    <div class="skill-chips">
+                        <a href="https://www.python.org" target="_blank" class="chip"><i class="fab fa-python"></i> Python</a>
+                        <a href="https://www.java.com" target="_blank" class="chip"><i class="fab fa-java"></i> Java</a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="chip"><i class="fab fa-js"></i> JavaScript</a>
+                        <a href="https://www.typescriptlang.org" target="_blank" class="chip"><i class="fas fa-code"></i> TypeScript</a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="chip"><i class="fab fa-html5"></i> HTML / CSS</a>
+                        <a href="https://www.php.net" target="_blank" class="chip"><i class="fab fa-php"></i> PHP</a>
+                    </div>
                 </div>
-                <div class="experience-duration">
-                    <i class="far fa-calendar-alt"></i>
-                    <span>December 2025 - Present</span>
-                </div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Specializing in data preparation and processing to support AI and machine learning initiatives</li>
-                        <li>Ensuring data quality, accuracy, and consistency through systematic validation and cleaning processes</li>
-                        <li>Collaborating with data science teams to prepare datasets for model training and analysis</li>
-                        <li>Maintaining strict confidentiality and adhering to data security protocols and best practices</li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- DevStudio -->
-            <div class="experience-card">
-                <h3>MERN Stack Developer</h3>
-                <div class="company-info">
-                    <span class="company-name">DevStudio</span>
-                    <span class="job-type">Remote Part-time</span>
+                <div class="skill-group reveal-up">
+                    <div class="skill-group-label">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Frameworks &amp; Libraries</span>
+                    </div>
+                    <div class="skill-chips">
+                        <a href="https://react.dev" target="_blank" class="chip"><i class="fab fa-react"></i> React</a>
+                        <a href="https://nodejs.org" target="_blank" class="chip"><i class="fab fa-node-js"></i> Node.js</a>
+                        <a href="https://www.djangoproject.com" target="_blank" class="chip"><i class="fab fa-python"></i> Django</a>
+                        <a href="https://flask.palletsprojects.com" target="_blank" class="chip"><i class="fas fa-vial"></i> Flask</a>
+                        <a href="https://expressjs.com" target="_blank" class="chip"><i class="fas fa-server"></i> Express.js</a>
+                        <a href="https://vuejs.org" target="_blank" class="chip"><i class="fab fa-vuejs"></i> Vue.js</a>
+                        <a href="https://tailwindcss.com" target="_blank" class="chip"><i class="fas fa-wind"></i> Tailwind CSS</a>
+                        <a href="https://vitejs.dev" target="_blank" class="chip"><i class="fas fa-bolt"></i> Vite</a>
+                    </div>
                 </div>
-                <div class="experience-duration">
-                    <i class="far fa-calendar-alt"></i>
-                    <span>November 2023 - Present</span>
+
+                <div class="skill-group reveal-up">
+                    <div class="skill-group-label">
+                        <i class="fas fa-brain"></i>
+                        <span>AI &amp; Machine Learning</span>
+                    </div>
+                    <div class="skill-chips">
+                        <a href="https://www.tensorflow.org" target="_blank" class="chip"><i class="fas fa-brain"></i> TensorFlow</a>
+                        <a href="https://pytorch.org" target="_blank" class="chip"><i class="fas fa-fire-alt"></i> PyTorch</a>
+                        <a href="https://pjreddie.com/darknet/yolo" target="_blank" class="chip"><i class="fas fa-eye"></i> YOLO</a>
+                        <a href="https://opencv.org" target="_blank" class="chip"><i class="fas fa-video"></i> OpenCV</a>
+                        <a href="https://pytorch.org" target="_blank" class="chip"><i class="fas fa-network-wired"></i> CNN</a>
+                        <a href="https://www.opengl.org" target="_blank" class="chip"><i class="fas fa-cube"></i> OpenGL</a>
+                    </div>
                 </div>
-                <div class="experience-description">
-                    <ul>
-                        <li>Developing and maintaining web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js)</li>
-                        <li>Collaborating with team members to implement new features and improve existing functionality</li>
-                        <li>Writing clean, efficient, and maintainable code following best practices</li>
-                    </ul>
+
+                <div class="skill-group reveal-up">
+                    <div class="skill-group-label">
+                        <i class="fas fa-database"></i>
+                        <span>Databases</span>
+                    </div>
+                    <div class="skill-chips">
+                        <a href="https://www.mysql.com" target="_blank" class="chip"><i class="fas fa-database"></i> MySQL</a>
+                        <a href="https://www.mongodb.com" target="_blank" class="chip"><i class="fas fa-leaf"></i> MongoDB</a>
+                        <a href="https://firebase.google.com" target="_blank" class="chip"><i class="fas fa-fire"></i> Firebase</a>
+                        <a href="https://www.postgresql.org" target="_blank" class="chip"><i class="fas fa-database"></i> PostgreSQL</a>
+                    </div>
+                </div>
+
+                <div class="skill-group reveal-up">
+                    <div class="skill-group-label">
+                        <i class="fas fa-cloud"></i>
+                        <span>Cloud &amp; DevOps</span>
+                    </div>
+                    <div class="skill-chips">
+                        <a href="https://aws.amazon.com/" target="_blank" class="chip"><i class="fab fa-aws"></i> AWS</a>
+                        <a href="https://www.oracle.com/cloud/" target="_blank" class="chip"><i class="fas fa-cloud"></i> Oracle Cloud</a>
+                        <a href="https://www.digitalocean.com/" target="_blank" class="chip"><i class="fas fa-water"></i> DigitalOcean</a>
+                        <a href="https://render.com/" target="_blank" class="chip"><i class="fas fa-rocket"></i> Render</a>
+                        <a href="https://railway.app/" target="_blank" class="chip"><i class="fas fa-train"></i> Railway</a>
+                        <a href="https://www.netlify.com/" target="_blank" class="chip"><i class="fas fa-layer-group"></i> Netlify</a>
+                        <a href="https://www.heroku.com/" target="_blank" class="chip"><i class="fas fa-server"></i> Heroku</a>
+                    </div>
+                </div>
+
+                <div class="skill-group reveal-up">
+                    <div class="skill-group-label">
+                        <i class="fas fa-palette"></i>
+                        <span>Design &amp; Creative</span>
+                    </div>
+                    <div class="skill-chips">
+                        <a href="https://www.figma.com" target="_blank" class="chip"><i class="fab fa-figma"></i> Figma</a>
+                        <a href="https://www.adobe.com/products/photoshop.html" target="_blank" class="chip"><i class="fas fa-paint-brush"></i> Photoshop</a>
+                        <a href="https://www.adobe.com/products/illustrator.html" target="_blank" class="chip"><i class="fas fa-pen-nib"></i> Illustrator</a>
+                        <a href="https://www.autodesk.com/products/maya" target="_blank" class="chip"><i class="fas fa-photo-video"></i> 2D/3D Animation</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section reveal">
+    <!-- ═══════════════════════════════════════
+         EXPERIENCE SECTION (LinkedIn-style)
+    ═══════════════════════════════════════ -->
+    <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <!-- BGRemover Project -->
-                <div class="project-card bgremover-card">
-                    <div class="project-content">
-                        <h3>BGRemover</h3>
-                        <div class="project-meta">
-                            <span class="project-category">AI-Powered Image Processing</span>
+            <div class="section-header reveal-up">
+                <span class="section-tag">Career Path</span>
+                <h2 class="section-title">Professional Experience</h2>
+            </div>
+
+            <div class="experience-timeline">
+
+                <!-- ── ClassTablet (Startup · Featured) ── -->
+                <div class="timeline-item timeline-item-featured reveal-up">
+                    <div class="timeline-left">
+                        <div class="tl-logo tl-logo-startup">
+                            <span>CT</span>
                         </div>
-                        <div class="project-description">
-                            <ul>
-                                <li>Bangladesh's FIRST AI-powered background removal tool with top-notch quality and post-removal editing capabilities</li>
-                                <li>First platform in the country to support all image formats including HEIC processing</li>
-                                <li>Advanced editing features allowing users to fine-tune results after background removal</li>
-                                <li>Built with cutting-edge AI technology for precise and professional results</li>
-                            </ul>
+                        <div class="tl-connector"></div>
+                    </div>
+
+                    <div class="tl-card tl-card-featured">
+                        <div class="tl-founder-banner">
+                            <span class="tl-founder-icon"><i class="fas fa-rocket"></i></span>
+                            <span>Co-Founded Startup &mdash; Founding Software Engineer</span>
                         </div>
-                        <div class="project-tech">
-                            <span>AI/ML</span>
-                            <span>Image Processing</span>
+
+                        <div class="tl-header">
+                            <div class="tl-role-info">
+                                <h3 class="tl-role">Founding Software Engineer</h3>
+                                <a href="https://classtablet.com" target="_blank" rel="noopener noreferrer" class="tl-company tl-company-startup">
+                                    ClassTablet <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                                <div class="tl-meta-row">
+                                    <span class="tl-badge startup">Startup · On-site</span>
+                                    <span class="tl-meta-item">
+                                        <i class="far fa-calendar-alt"></i> Feb 2026 &ndash; Present
+                                    </span>
+                                    <span class="tl-meta-item">
+                                        <i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tl-ct-platform-desc">
+                            <p>Bangladesh-first, all-in-one edtech platform that replaces spreadsheets, WhatsApp groups, paper registers and disconnected tools with a single AI-powered system — built for teachers, students, parents, and institutions. Bilingual (English + Bangla), BDT-priced, integrated with bKash, Nagad &amp; Rocket via SSLCommerz.</p>
+                            <div class="tl-ct-links">
+                                <a href="https://classtablet.com" target="_blank" rel="noopener noreferrer" class="ct-link-btn">
+                                    <i class="fas fa-globe"></i> classtablet.com
+                                </a>
+                                <a href="https://app.classtablet.com" target="_blank" rel="noopener noreferrer" class="ct-link-btn">
+                                    <i class="fas fa-desktop"></i> app.classtablet.com
+                                </a>
+                                <a href="https://github.com/PixL-Bangladesh/classtablet/branches" target="_blank" rel="noopener noreferrer" class="ct-link-btn">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <ul class="tl-description">
+                            <li>Co-founded ClassTablet with a team of 11 (5 technical, 5 marketing, CEO &amp; COO) — architecting and shipping core features from the ground up as Founding Software Engineer</li>
+                            <li>Built a multi-tenant white-label system: institutions run ClassTablet on their own domain, brand, colors, and authentication policies (Google, email/OTP, student ID)</li>
+                            <li>Engineered AWS IVS-powered live classroom streaming with real-time chat, recording, and viewer analytics for every classroom</li>
+                            <li>Integrated SSLCommerz two-layer payment system (bKash, Nagad, Rocket, cards) — students pay teachers, ClassTablet bills institutions with PDF invoice generation</li>
+                            <li>Developed AI-powered study tools using GPT-4o-mini and Google Gemini 2.5 Flash — quiz generation, lesson planners, adaptive flashcards, spaced repetition (SM-2), and Bangla handwriting recognition</li>
+                            <li>Designed production-grade PostgreSQL schema with 100+ tables across 40 schema files, 48 singleton service classes, and 53 Zod v4 contracts for a fully type-safe full-stack TypeScript codebase</li>
+                            <li>Implemented gamification engine (XP, badges, streaks, leaderboards, QR-verified certificates) and parent real-time dashboard with multi-channel notification digest engine</li>
+                        </ul>
+
+                        <div class="tl-ct-stats">
+                            <div class="ct-stat-item">
+                                <span class="ct-stat-num">100+</span>
+                                <span class="ct-stat-lbl">DB Tables</span>
+                            </div>
+                            <div class="ct-stat-item">
+                                <span class="ct-stat-num">48</span>
+                                <span class="ct-stat-lbl">Service Classes</span>
+                            </div>
+                            <div class="ct-stat-item">
+                                <span class="ct-stat-num">53</span>
+                                <span class="ct-stat-lbl">Zod Schemas</span>
+                            </div>
+                            <div class="ct-stat-item">
+                                <span class="ct-stat-num">6</span>
+                                <span class="ct-stat-lbl">User Roles</span>
+                            </div>
+                            <div class="ct-stat-item">
+                                <span class="ct-stat-num">10+</span>
+                                <span class="ct-stat-lbl">Feature Pillars</span>
+                            </div>
+                        </div>
+
+                        <div class="tl-skills">
+                            <span>TypeScript</span>
+                            <span>Next.js</span>
                             <span>React</span>
-                            <span>Node.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://bgremover.pro" target="_blank" class="btn btn-demo">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/ApurboSM/BGRemover" target="_blank" class="btn btn-github">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
+                            <span>PostgreSQL</span>
+                            <span>Drizzle ORM</span>
+                            <span>AWS ECS Fargate</span>
+                            <span>AWS IVS</span>
+                            <span>SSLCommerz</span>
+                            <span>GPT-4o</span>
+                            <span>Gemini Vision</span>
+                            <span>Expo</span>
+                            <span>Redis</span>
+                            <span>Sentry</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- LipReader Project -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>LipReader</h3>
-                        <div class="project-meta">
-                            <span class="project-date">Spring 2024</span>
-                            <span class="project-category">CSE439: Machine Vision, CSE442: NLP-driven UI/UX</span>
+                <!-- ── Nyntax ── -->
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-left">
+                        <div class="tl-logo">
+                            <img src="assets/images/nyntax.png" alt="Nyntax"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                            <span class="tl-logo-fallback" style="display:none">NY</span>
                         </div>
-                        <div class="project-description">
-                            <ul>
-                                <li>Trained a LipNet model to read lips from video footage.</li>
-                                <li>Used GRID Corpus Dataset for training & validation.</li>
-                                <li>Built an interface with Tkinter for video input and real-time predictions.</li>
-                            </ul>
+                        <div class="tl-connector"></div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-header">
+                            <div class="tl-role-info">
+                                <h3 class="tl-role">Data Preparation Associate</h3>
+                                <a href="https://www.nyntax.com/" target="_blank" rel="noopener noreferrer" class="tl-company">
+                                    Nyntax <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                                <div class="tl-meta-row">
+                                    <span class="tl-badge hybrid">Hybrid</span>
+                                    <span class="tl-meta-item">
+                                        <i class="far fa-calendar-alt"></i> Dec 2025 – Present
+                                    </span>
+                                    <span class="tl-meta-item">
+                                        <i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-tech">
+                        <ul class="tl-description">
+                            <li>Specializing in data preparation and processing to support AI and machine learning initiatives</li>
+                            <li>Ensuring data quality, accuracy, and consistency through systematic validation and cleaning processes</li>
+                            <li>Collaborating with data science teams to prepare datasets for model training and analysis</li>
+                            <li>Maintaining strict confidentiality and adhering to data security protocols and best practices</li>
+                        </ul>
+                        <div class="tl-skills">
                             <span>Python</span>
-                            <span>TensorFlow</span>
-                            <span>Tkinter</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/ApurboSM/LipReader-CSE439/blob/main/main.ipynb" target="_blank" class="btn btn-demo">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/ApurboSM/LipReader-CSE439" target="_blank" class="btn btn-github">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
+                            <span>Data Processing</span>
+                            <span>Machine Learning</span>
+                            <span>Data Validation</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- RentWheels Project -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>RentWheels</h3>
-                        <div class="project-meta">
-                            <span class="project-category">Full-Stack Web Application</span>
+                <!-- ── Greenosa Digital ── -->
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-left">
+                        <div class="tl-logo">
+                            <img src="assets/images/greenosa.jpg" alt="Greenosa Digital"
+                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                            <span class="tl-logo-fallback" style="display:none">GD</span>
                         </div>
-                        <div class="project-description">
-                            <ul>
-                                <li>Developed a vehicle rental platform where users can search for available cars/bikes and book them.</li>
-                                <li>Built with React (Frontend), Node.js/Express (Backend), and MongoDB (Database).</li>
-                                <li>Implemented user authentication, booking system, and receipt generation with QR codes.</li>
-                            </ul>
+                        <div class="tl-connector"></div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-header">
+                            <div class="tl-role-info">
+                                <h3 class="tl-role">Software Developer</h3>
+                                <a href="https://www.linkedin.com/company/greenosa-digital" target="_blank" rel="noopener noreferrer" class="tl-company">
+                                    Greenosa Digital <i class="fas fa-external-link-alt fa-xs"></i>
+                                </a>
+                                <div class="tl-meta-row">
+                                    <span class="tl-badge remote">Remote</span>
+                                    <span class="tl-meta-item">
+                                        <i class="far fa-calendar-alt"></i> Jun 2025 – Present
+                                    </span>
+                                    <span class="tl-meta-item">
+                                        <i class="fas fa-map-marker-alt"></i> Remote, Bangladesh
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-tech">
+                        <ul class="tl-description">
+                            <li>Building Bangladesh's 1st DIGITAL Player and Playing Ground Finding &amp; Match-making Platform</li>
+                            <li>Developing and implementing innovative software solutions for digital transformation initiatives</li>
+                            <li>Collaborating with cross-functional teams to deliver high-quality, scalable applications</li>
+                            <li>Utilizing modern frameworks and best practices to ensure maintainable, production-ready code</li>
+                        </ul>
+                        <div class="tl-skills">
                             <span>React</span>
                             <span>Node.js</span>
                             <span>MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://rentwheels007.netlify.app/" target="_blank" class="btn btn-demo">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="btn btn-github">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
+                            <span>Full-Stack</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Plant Disease Detection -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Plant Disease Detection</h3>
-                        <div class="project-meta">
-                            <span class="project-category">Machine Learning, Image Processing</span>
+                <!-- ── DevStudio ── -->
+                <div class="timeline-item reveal-up">
+                    <div class="timeline-left">
+                        <div class="tl-logo tl-logo-initial">
+                            <span>DS</span>
                         </div>
-                        <div class="project-description">
-                            <ul>
-                                <li>Built a Deep Learning model to classify plant diseases using Convolutional Neural Networks (CNNs).</li>
-                                <li>Trained on a dataset of infected and healthy plant leaves.</li>
-                                <li>Implemented a user-friendly web app where users can upload images for diagnosis.</li>
-                            </ul>
+                        <div class="tl-connector tl-connector-last"></div>
+                    </div>
+
+                    <div class="tl-card">
+                        <div class="tl-header">
+                            <div class="tl-role-info">
+                                <h3 class="tl-role">MERN Stack Developer</h3>
+                                <span class="tl-company">DevStudio</span>
+                                <div class="tl-meta-row">
+                                    <span class="tl-badge part-time">Remote · Part-time</span>
+                                    <span class="tl-meta-item">
+                                        <i class="far fa-calendar-alt"></i> Nov 2023 – Present
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>TensorFlow</span>
-                            <span>Flask</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/ApurboSM/Plant_Disease_Detection/blob/main/Test_plant_disease.ipynb" target="_blank" class="btn btn-demo">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/ApurboSM/Plant_Disease_Detection/tree/main" target="_blank" class="btn btn-github">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
+                        <ul class="tl-description">
+                            <li>Developing and maintaining full-stack web applications using the MERN stack</li>
+                            <li>Collaborating with team members to implement new features and improve functionality</li>
+                            <li>Writing clean, efficient, and maintainable code following modern best practices</li>
+                        </ul>
+                        <div class="tl-skills">
+                            <span>MongoDB</span>
+                            <span>Express.js</span>
+                            <span>React.js</span>
+                            <span>Node.js</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Animal Detection -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Animal Detection</h3>
-                        <div class="project-meta">
-                            <span class="project-category">Computer Vision, AI</span>
-                        </div>
-                        <div class="project-description">
-                            <ul>
-                                <li>Developed an AI-based system to detect animals in images/videos using YOLO object detection model.</li>
-                                <li>Trained the model on a dataset of wildlife and domestic animals.</li>
-                                <li>Built an interactive GUI for users to upload images and receive real-time results.</li>
-                            </ul>
-                        </div>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>YOLO</span>
-                            <span>OpenCV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-demo disabled">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="btn btn-github">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HospitalCare Project -->
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>HospitalCare</h3>
-                        <div class="project-meta">
-                            <span class="project-date">Spring 2024</span>
-                            <span class="project-category">CSE370: Database Management</span>
-                        </div>
-                        <div class="project-description">
-                            <ul>
-                                <li>Collaborated in a team of five to develop a hospital info and doctor's appointment booking system.</li>
-                                <li>Designed schema, ER/EER diagrams, and implemented database best practices.</li>
-                                <li>Built a responsive web interface using Django, Bootstrap.</li>
-                            </ul>
-                        </div>
-                        <div class="project-tech">
-                            <span>Django</span>
-                            <span>Bootstrap</span>
-                            <span>MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/ApurboSM/Hospital-Care" target="_blank" class="btn btn-github">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Client Projects Section -->
-    <section id="client-projects" class="section reveal">
+    <!-- ═══════════════════════════════════════
+         PROJECTS SECTION
+    ═══════════════════════════════════════ -->
+    <section id="projects" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Client Projects</h2>
+            <div class="section-header reveal-up">
+                <span class="section-tag">My Work</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+
+            <!-- Featured: BGRemover -->
+            <div class="featured-project reveal-up">
+                <div class="featured-mockup">
+                    <div class="mockup-window">
+                        <div class="mockup-titlebar">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="mockup-url">bgremover.pro</span>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mockup-brand">
+                                <i class="fas fa-magic"></i>
+                                <h3>BGRemover</h3>
+                            </div>
+                            <div class="mockup-tag">Bangladesh's First AI Tool</div>
+                            <div class="mockup-cards">
+                                <div class="mockup-card-item"><i class="fas fa-image"></i></div>
+                                <div class="mockup-card-item active"><i class="fas fa-wand-magic-sparkles"></i></div>
+                                <div class="mockup-card-item"><i class="fas fa-download"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="featured-content">
+                    <div class="project-tag-label">Featured Project</div>
+                    <h3>BGRemover — AI Background Removal</h3>
+                    <p>Bangladesh's FIRST AI-powered background removal tool with top-notch quality and advanced post-removal editing capabilities. The first platform in the country to support all image formats, including HEIC processing.</p>
+                    <div class="project-stack">
+                        <span>AI/ML</span>
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>Image Processing</span>
+                        <span>HEIC Support</span>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://bgremover.pro" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/ApurboSM/BGRemover" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
             <div class="projects-grid">
-                <!-- FinSecure Banking Platform -->
-                <div class="project-card client-project">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop" alt="FinSecure Banking Platform">
-                        <div class="project-overlay">
-                            <div class="project-year">2023</div>
-                            <div class="project-tech-overlay">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Blockchain</span>
+
+                <div class="project-card reveal-up">
+                    <div class="project-card-top">
+                        <div class="project-icon-wrap"><i class="fas fa-folder-open"></i></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/ApurboSM/LipReader-CSE439" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/ApurboSM/LipReader-CSE439/blob/main/main.ipynb" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card-title">LipReader</h3>
+                    <div class="project-card-badge">AI · Computer Vision</div>
+                    <p class="project-card-desc">Trained a LipNet model on GRID Corpus Dataset to read lips from video footage with a real-time Tkinter interface.</p>
+                    <div class="project-card-stack">
+                        <span>Python</span><span>TensorFlow</span><span>Tkinter</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal-up">
+                    <div class="project-card-top">
+                        <div class="project-icon-wrap"><i class="fas fa-folder-open"></i></div>
+                        <div class="project-card-links">
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://rentwheels007.netlify.app/" target="_blank" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card-title">RentWheels</h3>
+                    <div class="project-card-badge">Full-Stack · MERN</div>
+                    <p class="project-card-desc">Vehicle rental platform with user auth, booking system, and QR-coded receipt generation. Built on the MERN stack.</p>
+                    <div class="project-card-stack">
+                        <span>React</span><span>Node.js</span><span>MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal-up">
+                    <div class="project-card-top">
+                        <div class="project-icon-wrap"><i class="fas fa-folder-open"></i></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/ApurboSM/Plant_Disease_Detection/tree/main" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/ApurboSM/Plant_Disease_Detection/blob/main/Test_plant_disease.ipynb" target="_blank" aria-label="Notebook"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card-title">Plant Disease Detection</h3>
+                    <div class="project-card-badge">ML · Image Processing</div>
+                    <p class="project-card-desc">Deep Learning CNN model to classify plant diseases from leaf images. Web app for AI-powered diagnosis.</p>
+                    <div class="project-card-stack">
+                        <span>Python</span><span>TensorFlow</span><span>Flask</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal-up">
+                    <div class="project-card-top">
+                        <div class="project-icon-wrap"><i class="fas fa-folder-open"></i></div>
+                        <div class="project-card-links">
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card-title">Animal Detection</h3>
+                    <div class="project-card-badge">Computer Vision · AI</div>
+                    <p class="project-card-desc">AI system detecting wildlife and domestic animals in images/videos using YOLO with an interactive real-time GUI.</p>
+                    <div class="project-card-stack">
+                        <span>Python</span><span>YOLO</span><span>OpenCV</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal-up">
+                    <div class="project-card-top">
+                        <div class="project-icon-wrap"><i class="fas fa-folder-open"></i></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/ApurboSM/Hospital-Care" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card-title">HospitalCare</h3>
+                    <div class="project-card-badge">Full-Stack · Database</div>
+                    <p class="project-card-desc">Hospital info &amp; doctor appointment booking system. Designed ER/EER diagrams, built full-stack in a team of five.</p>
+                    <div class="project-card-stack">
+                        <span>Django</span><span>Bootstrap</span><span>MySQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal-up">
+                    <div class="project-card-top">
+                        <div class="project-icon-wrap"><i class="fas fa-folder-open"></i></div>
+                        <div class="project-card-links">
+                            <a href="https://github.com/ApurboSM/UIUBookNest" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-card-title">UIUBookNest</h3>
+                    <div class="project-card-badge">E-commerce · Campus Platform</div>
+                    <p class="project-card-desc">Smart campus bookstore for UIU students — curated textbooks, stationery &amp; exam supplies with campus pickup or dorm delivery via Pathao &amp; RedX.</p>
+                    <div class="project-card-stack">
+                        <span>React</span><span>Node.js</span><span>MongoDB</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CLIENT PROJECTS
+    ═══════════════════════════════════════ -->
+    <section id="client-projects" class="section">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Freelance Work</span>
+                <h2 class="section-title">Client Projects</h2>
+            </div>
+
+            <div class="client-grid">
+
+                <div class="client-card reveal-up">
+                    <div class="client-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=360&fit=crop" alt="FinSecure Banking Platform">
+                        <div class="client-overlay">
+                            <div class="client-tech-tags">
+                                <span>React</span><span>Node.js</span><span>PostgreSQL</span><span>Blockchain</span>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
+                    <div class="client-card-body">
+                        <span class="client-meta">Web Development &middot; 2023</span>
                         <h3>FinSecure Banking Platform</h3>
-                        <div class="project-meta">
-                            <span class="project-category">Web Development</span>
-                            <span class="project-date">2023</span>
-                        </div>
-                        <div class="project-description">
-                            <p>Secure online banking platform with advanced encryption, real-time transactions, and comprehensive financial management tools.</p>
-                        </div>
+                        <p>Secure online banking with advanced encryption, real-time transactions, and financial management tools.</p>
                     </div>
                 </div>
 
-
-
-                <!-- EcoMarket E-commerce Platform -->
-                <div class="project-card client-project">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop" alt="EcoMarket E-commerce Platform">
-                        <div class="project-overlay">
-                            <div class="project-year">2022</div>
-                            <div class="project-tech-overlay">
-                                <span class="tech-tag">Vue.js</span>
-                                <span class="tech-tag">Express</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">Stripe</span>
+                <div class="client-card reveal-up">
+                    <div class="client-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=360&fit=crop" alt="EcoMarket">
+                        <div class="client-overlay">
+                            <div class="client-tech-tags">
+                                <span>Vue.js</span><span>Express</span><span>MongoDB</span><span>Stripe</span>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <h3>EcoMarket E-commerce Platform</h3>
-                        <div class="project-meta">
-                            <span class="project-category">Web Development</span>
-                            <span class="project-date">2022</span>
-                        </div>
-                        <div class="project-description">
-                            <p>Sustainable e-commerce platform promoting eco-friendly products with carbon footprint tracking and green delivery options.</p>
-                        </div>
+                    <div class="client-card-body">
+                        <span class="client-meta">E-commerce &middot; 2022</span>
+                        <h3>EcoMarket Platform</h3>
+                        <p>Sustainable e-commerce platform promoting eco-friendly products with carbon footprint tracking.</p>
                     </div>
                 </div>
 
-                <!-- LearnQuest Educational Platform -->
-                <div class="project-card client-project">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop" alt="LearnQuest Educational Platform">
-                        <div class="project-overlay">
-                            <div class="project-year">2023</div>
-                            <div class="project-tech-overlay">
-                                <span class="tech-tag">Vue.js</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Django</span>
-                                <span class="tech-tag">PostgreSQL</span>
+                <div class="client-card reveal-up">
+                    <div class="client-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=360&fit=crop" alt="LearnQuest">
+                        <div class="client-overlay">
+                            <div class="client-tech-tags">
+                                <span>Vue.js</span><span>Django</span><span>PostgreSQL</span>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
+                    <div class="client-card-body">
+                        <span class="client-meta">SaaS &middot; 2023</span>
                         <h3>LearnQuest Educational Platform</h3>
-                        <div class="project-meta">
-                            <span class="project-category">SaaS</span>
-                            <span class="project-date">2023</span>
-                        </div>
-                        <div class="project-description">
-                            <p>Interactive learning platform with personalized curriculum and real-time progress tracking for enhanced educational experiences.</p>
-                        </div>
+                        <p>Interactive learning with personalized curriculum and real-time progress tracking.</p>
                     </div>
                 </div>
 
-                <!-- TravelBuddy Mobile App -->
-                <div class="project-card client-project">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop" alt="TravelBuddy Mobile App">
-                        <div class="project-overlay">
-                            <div class="project-year">2021</div>
-                            <div class="project-tech-overlay">
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">Firebase</span>
-                                <span class="tech-tag">Google Maps</span>
-                                <span class="tech-tag">ML Kit</span>
+                <div class="client-card reveal-up">
+                    <div class="client-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=360&fit=crop" alt="TravelBuddy">
+                        <div class="client-overlay">
+                            <div class="client-tech-tags">
+                                <span>Flutter</span><span>Firebase</span><span>Google Maps</span>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
+                    <div class="client-card-body">
+                        <span class="client-meta">Mobile App &middot; 2021</span>
                         <h3>TravelBuddy Mobile App</h3>
-                        <div class="project-meta">
-                            <span class="project-category">Mobile App</span>
-                            <span class="project-date">2021</span>
-                        </div>
-                        <div class="project-description">
-                            <p>AI-powered travel companion app with smart itinerary planning, local recommendations, and real-time travel assistance.</p>
-                        </div>
+                        <p>AI-powered travel companion with smart itinerary planning and local recommendations.</p>
                     </div>
                 </div>
 
-
-
-                <!-- CryptoWallet Dashboard -->
-                <div class="project-card client-project">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&h=300&fit=crop" alt="CryptoWallet Dashboard">
-                        <div class="project-overlay">
-                            <div class="project-year">2023</div>
-                            <div class="project-tech-overlay">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Web3.js</span>
-                                <span class="tech-tag">Solidity</span>
-                                <span class="tech-tag">Chart.js</span>
+                <div class="client-card reveal-up">
+                    <div class="client-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=360&fit=crop" alt="CryptoWallet">
+                        <div class="client-overlay">
+                            <div class="client-tech-tags">
+                                <span>React</span><span>Web3.js</span><span>Solidity</span>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
+                    <div class="client-card-body">
+                        <span class="client-meta">Web3 &middot; 2023</span>
                         <h3>CryptoWallet Dashboard</h3>
-                        <div class="project-meta">
-                            <span class="project-category">Web Development</span>
-                            <span class="project-date">2023</span>
-                        </div>
-                        <div class="project-description">
-                            <p>Advanced cryptocurrency portfolio management dashboard with real-time market data, trading analytics, and secure wallet integration.</p>
-                        </div>
+                        <p>Crypto portfolio manager with real-time market data and secure wallet integration.</p>
                     </div>
                 </div>
 
-                <!-- FitTrack Fitness App -->
-                <div class="project-card client-project">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop" alt="FitTrack Fitness App">
-                        <div class="project-overlay">
-                            <div class="project-year">2021</div>
-                            <div class="project-tech-overlay">
-                                <span class="tech-tag">React Native</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">HealthKit</span>
+                <div class="client-card reveal-up">
+                    <div class="client-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=360&fit=crop" alt="FitTrack">
+                        <div class="client-overlay">
+                            <div class="client-tech-tags">
+                                <span>React Native</span><span>Node.js</span><span>MongoDB</span>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
+                    <div class="client-card-body">
+                        <span class="client-meta">Mobile App &middot; 2021</span>
                         <h3>FitTrack Fitness App</h3>
-                        <div class="project-meta">
-                            <span class="project-category">Mobile App</span>
-                            <span class="project-date">2021</span>
-                        </div>
-                        <div class="project-description">
-                            <p>Comprehensive fitness tracking app with AI-powered workout recommendations, nutrition planning, and social fitness challenges.</p>
-                        </div>
+                        <p>Comprehensive fitness tracking with AI-powered workout recommendations and social challenges.</p>
                     </div>
                 </div>
 
-                <!-- DataSense Analytics Platform -->
-                <div class="project-card client-project">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="DataSense Analytics Platform">
-                        <div class="project-overlay">
-                            <div class="project-year">2022</div>
-                            <div class="project-tech-overlay">
-                                <span class="tech-tag">Angular</span>
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Apache Spark</span>
-                                <span class="tech-tag">D3.js</span>
+                <div class="client-card reveal-up">
+                    <div class="client-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=360&fit=crop" alt="DataSense">
+                        <div class="client-overlay">
+                            <div class="client-tech-tags">
+                                <span>Angular</span><span>Python</span><span>Apache Spark</span>
                             </div>
                         </div>
                     </div>
-                    <div class="project-content">
+                    <div class="client-card-body">
+                        <span class="client-meta">SaaS &middot; 2022</span>
                         <h3>DataSense Analytics Platform</h3>
-                        <div class="project-meta">
-                            <span class="project-category">SaaS</span>
-                            <span class="project-date">2022</span>
+                        <p>Enterprise BI platform with advanced visualization, predictive analytics, and automated reporting.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         EDUCATION
+    ═══════════════════════════════════════ -->
+    <section id="education" class="section section-alt">
+        <div class="container">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Academic Background</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+
+            <div class="edu-grid">
+
+                <div class="edu-card reveal-up">
+                    <div class="edu-card-accent"></div>
+                    <div class="edu-logo">
+                        <img src="assets/images/bracu.png" alt="BRAC University"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="edu-logo-fallback" style="display:none"><i class="fas fa-university"></i></div>
+                    </div>
+                    <div class="edu-body">
+                        <span class="edu-degree">Bachelor of Science</span>
+                        <h3>Computer Science &amp; Engineering</h3>
+                        <div class="edu-institution">BRAC University, Dhaka</div>
+                        <div class="edu-meta">
+                            <span><i class="far fa-calendar-alt"></i> 2022 – 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</span>
                         </div>
-                        <div class="project-description">
-                            <p>Enterprise-grade business intelligence platform with advanced data visualization, predictive analytics, and automated reporting.</p>
+                        <p class="edu-detail">
+                            Relevant coursework: Digital Logic Design, OOP, Data Structures, Algorithms, Database Management, Operating Systems, Computer Vision, Image Processing, Machine Learning
+                        </p>
+                    </div>
+                </div>
+
+                <div class="edu-card reveal-up">
+                    <div class="edu-card-accent"></div>
+                    <div class="edu-logo">
+                        <div class="edu-logo-fallback" style="display:flex"><i class="fas fa-school"></i></div>
+                    </div>
+                    <div class="edu-body">
+                        <span class="edu-degree">Higher Secondary Certificate (HSC)</span>
+                        <h3>Science Group</h3>
+                        <div class="edu-institution">Sirajganj Govt. College, Sirajganj</div>
+                        <div class="edu-meta">
+                            <span><i class="far fa-calendar-alt"></i> 2018 – 2019</span>
+                            <span><i class="fas fa-star"></i> GPA: 5.00</span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section reveal">
+    <!-- ═══════════════════════════════════════
+         CERTIFICATIONS
+    ═══════════════════════════════════════ -->
+    <section id="certifications" class="section">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <h4>
-                        Bachelor of Science in Computer Science & Engineering
-                    </h4>
-                    <p class="institution">BRAC University, Dhaka</p>
-                    <p class="duration">2022 - 2026</p>
-                    <p class="coursework">
-                        Relevant coursework: Digital Logic Design, OOP, Data Structure, Algorithms, Database Management System, Operating System, Image Processing, Computer Vision and more.
-                    </p>
+            <div class="section-header reveal-up">
+                <span class="section-tag">Credentials</span>
+                <h2 class="section-title">Certifications &amp; Courses</h2>
+            </div>
+
+            <div class="cert-grid">
+
+                <div class="cert-card reveal-up">
+                    <div class="cert-header">
+                        <div class="cert-issuer-logo">
+                            <img src="assets/images/udemy.png" alt="Udemy"
+                                 onerror="this.style.display='none'">
+                        </div>
+                        <span class="cert-issuer-name">Udemy</span>
+                        <span class="cert-category-tag">Programming</span>
+                    </div>
+                    <h3>Mastering C &amp; C++ Programming</h3>
+                    <p>From Fundamentals to Advanced — a transformative journey through C and C++ concepts.</p>
                 </div>
-                
-                <div class="education-card">
-                    <h4>Higher Secondary School</h4>
-                    <p class="institution">Sirajganj Govt. College, Sirajganj</p>
-                    <p class="grade">GPA: 5.00</p>
-                    <p class="duration">2018-19</p>
+
+                <div class="cert-card reveal-up">
+                    <div class="cert-header">
+                        <div class="cert-issuer-logo">
+                            <img src="assets/images/udemy.png" alt="Udemy"
+                                 onerror="this.style.display='none'">
+                        </div>
+                        <span class="cert-issuer-name">Udemy</span>
+                        <span class="cert-category-tag">AI/ML</span>
+                    </div>
+                    <h3>Artificial Intelligence: Master Advanced Concepts</h3>
+                    <p>Understanding AI, ML, DL, and Generative AI — key concepts and real-world use cases.</p>
                 </div>
+
+                <div class="cert-card reveal-up">
+                    <div class="cert-header">
+                        <div class="cert-issuer-logo">
+                            <img src="assets/images/bracu.png" alt="BRAC University"
+                                 onerror="this.style.display='none'">
+                        </div>
+                        <span class="cert-issuer-name">BRAC University TARC</span>
+                        <span class="cert-category-tag">Mobile Dev</span>
+                    </div>
+                    <h3>App Development</h3>
+                    <p>Intensive training in Figma design, Dart programming, and Flutter app development with Android Studio.</p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Add this after the Education Section -->
-    <section id="certifications" class="section reveal">
+    <!-- ═══════════════════════════════════════
+         ACTIVITIES
+    ═══════════════════════════════════════ -->
+    <section id="activities" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Certifications & Courses</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <h4>Mastering C & C++ Programming: From Fundamentals to Advanced</h4>
-                    <div class="institution-logo">
-                        <img src="udemy.png" alt="Udemy Logo">
+            <div class="section-header reveal-up">
+                <span class="section-tag">Community</span>
+                <h2 class="section-title">Activities &amp; Leadership</h2>
+            </div>
+
+            <div class="activity-grid">
+
+                <div class="activity-card reveal-up">
+                    <div class="activity-org-logo">
+                        <img src="assets/images/bucc.png" alt="BUCC"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="activity-logo-fallback" style="display:none"><i class="fas fa-users"></i></div>
                     </div>
-                    <p class="institution">Udemy</p>
-                    <p class="coursework">
-                        A transformative journey from mastering the basics to tackling advanced concepts in C and C++ programming.
-                    </p>
-                </div>
-                
-                <div class="education-card">
-                    <h4>Artificial Intelligence (AI): Master Advanced Concepts</h4>
-                    <div class="institution-logo">
-                        <img src="udemy.png" alt="Udemy Logo">
+                    <div class="activity-info">
+                        <div class="activity-role-title">Executive of Creative Team</div>
+                        <div class="activity-org-name">BRAC University Computer Club (BUCC)</div>
+                        <div class="activity-period"><i class="far fa-calendar-alt"></i> 2023 – Present</div>
+                        <p>Leading creative direction and visual content production for one of the largest university tech clubs in Bangladesh.</p>
                     </div>
-                    <p class="institution">Udemy</p>
-                    <p class="coursework">
-                        Understanding Artificial Intelligence (AI), ML, DL, Generative AI: Key Concepts, Terminology, and Real-World Use Cases
-                    </p>
                 </div>
-                
-                <div class="education-card">
-                    <h4>App Development</h4>
-                    <div class="institution-logo">
-                        <img src="bracu.png" alt="BRAC University Logo">
+
+                <div class="activity-card reveal-up">
+                    <div class="activity-org-logo">
+                        <img src="assets/images/bucc.png" alt="BUCC"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="activity-logo-fallback" style="display:none"><i class="fas fa-camera"></i></div>
                     </div>
-                    <p class="institution">BRAC University TARC</p>
-                    <p class="coursework">
-                        Completed intensive training in Figma design, Dart programming, and Flutter app development using Android Studio
-                    </p>
+                    <div class="activity-info">
+                        <div class="activity-role-title">Senior Executive of Photography</div>
+                        <div class="activity-org-name">BRAC University Computer Club (BUCC)</div>
+                        <div class="activity-period"><i class="far fa-calendar-alt"></i> 2023 – Present</div>
+                        <p>Overseeing photography operations, event coverage, and building the visual narrative of the club's activities.</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <section id="activities" class="section reveal">
+    <!-- ═══════════════════════════════════════
+         CONTACT
+    ═══════════════════════════════════════ -->
+    <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">Activities</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="card-content">
-                        <h4>Executive of Creative Team</h4>
-                        <p class="institution">BRAC University Computer Club (BUCC)</p>
-                        <p class="duration">2023 - Present</p>
-                    </div>
-                    <div class="club-logo">
-                        <img src="bucc.png" alt="BUCC Logo">
-                    </div>
-                </div>
-                
-                <div class="education-card">
-                    <div class="card-content">
-                        <h4>Senior Executive of Photography</h4>
-                        <p class="institution">BRAC University Computer Club (BUCC)</p>
-                        <p class="duration">2023 - Present</p>
-                    </div>
-                    <div class="club-logo">
-                        <img src="bucc.png" alt="BUCC Logo">
-                    </div>
-                </div>
+            <div class="section-header reveal-up">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Let's Work Together</h2>
+                <p class="section-subtitle">
+                    I'm currently open to new opportunities. Whether you have a project in mind, want to collaborate, or just want to say hi — my inbox is always open.
+                </p>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section reveal">
-        <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-grid">
-                <div class="contact-info-container">
-                    <div class="contact-info-card">
-                        <h3>Let's Connect</h3>
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <div class="contact-text">
-                                    <h4>Email</h4>
-                                    <a href="mailto:sm.apurbo@g.bracu.ac.bd">sm.apurbo@g.bracu.ac.bd</a>
-                                </div>
+            <div class="contact-layout">
+
+                <div class="contact-info-panel reveal-left">
+                    <div class="contact-item-row">
+                        <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-item-content">
+                            <div class="contact-item-label">Email</div>
+                            <a href="mailto:sm.apurbo@g.bracu.ac.bd" class="contact-item-value">sm.apurbo@g.bracu.ac.bd</a>
+                        </div>
+                    </div>
+                    <div class="contact-item-row">
+                        <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-item-content">
+                            <div class="contact-item-label">Phone</div>
+                            <a href="tel:+8801311035024" class="contact-item-value">+880 131 103 5024</a>
+                        </div>
+                    </div>
+                    <div class="contact-item-row">
+                        <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-item-content">
+                            <div class="contact-item-label">Location</div>
+                            <span class="contact-item-value">Dhaka, Bangladesh</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-social-row">
+                        <a href="https://github.com/ApurboSM" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/s-m-apurbo-673581339/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://facebook.com/smapurbo007" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+
+                    <a href="https://calendar.google.com/calendar/u/0/r/eventedit?text=Meeting+with+S.+M.+Apurbo&details=Let's+discuss+potential+opportunities+and+collaborations.&location=Online+Meeting"
+                       target="_blank" class="btn btn-ghost btn-block">
+                        <i class="far fa-calendar-alt"></i> Schedule a Meeting
+                    </a>
+                </div>
+
+                <div class="contact-form-panel reveal-right">
+                    <form id="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST" novalidate>
+                        <div class="form-row-dual">
+                            <div class="form-field">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name">
                             </div>
-                            <div class="contact-item">
-                                <i class="fas fa-phone"></i>
-                                <div class="contact-text">
-                                    <h4>Phone</h4>
-                                    <a href="tel:+8801311035024">+880 131 103 5024</a>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div class="contact-text">
-                                    <h4>Location</h4>
-                                    <p>Dhaka, Bangladesh</p>
-                                </div>
+                            <div class="form-field">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email">
                             </div>
                         </div>
-                        <div class="social-links-contact">
-                            <a href="https://github.com/ApurboSM" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/s-m-apurbo-673581339/" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://facebook.com/smapurbo007" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-container">
-                    <form id="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-field">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-field">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or idea..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-submit">
+                        <button type="submit" class="btn btn-primary btn-block">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </form>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Get in Touch Section -->
-    <section id="get-in-touch" class="section reveal">
-        <div class="container text-center">
-            <h2 class="get-in-touch-title">Get In Touch</h2>
-            <p class="get-in-touch-text">
-                I'm always open to new opportunities and interesting projects.
-                Whether you have a question or just want to say hi, feel free to reach out!
-            </p>
-            <div class="action-buttons">
-                <a href="#contact" class="btn btn-contact">
-                    <i class="fas fa-envelope"></i> Contact Me
-                </a>
-                <a href="https://calendar.google.com/calendar/u/0/r/eventedit?text=Meeting+with+S.+M.+Apurbo&details=Let's+discuss+potential+opportunities+and+collaborations.&location=Online+Meeting" target="_blank" class="btn btn-schedule">
-                    <i class="far fa-calendar-alt"></i> Schedule Meeting
-                </a>
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">&lt;SMA /&gt;</a>
+                    <p>S. M. Apurbo — Full-Stack Developer &amp; AI Engineer</p>
+                </div>
+
+                <div class="footer-nav">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                    <a href="card.html">Card</a>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://github.com/ApurboSM" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/s-m-apurbo-673581339/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://facebook.com/smapurbo007" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="visitor-counter" id="visitor-wrap">
+                    <i class="fas fa-eye"></i>
+                    <span id="visitor-count">—</span>
+                    <span>visitors</span>
+                </div>
+                <p class="footer-copy">&copy; 2026 S. M. Apurbo. Designed &amp; built with passion.</p>
             </div>
         </div>
-        
-        <!-- Visitor Counter -->
-        <div class="visitor-counter">
-            <i class="fas fa-eye"></i>
-            <span id="visitor-count">Loading...</span>
-            <span class="counter-label">Total Visitors</span>
-        </div>
-    </section>
+    </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js?v=1.5"></script>
-
-    <button id="back-to-top" class="back-to-top">
+    <!-- Back To Top -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
-</html> 
+</html>
