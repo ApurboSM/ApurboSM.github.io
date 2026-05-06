@@ -98,12 +98,12 @@ export function Footer() {
         :global(.footer-link) {
           display: block;
           font-size: 13.5px;
-          color: rgba(237, 237, 237, 0.65);
+          color: rgb(var(--fg) / 0.65);
           padding: 4px 0;
           transition: color 200ms;
         }
         :global(.footer-link:hover) {
-          color: #ededed;
+          color: rgb(var(--fg));
         }
       `}</style>
     </footer>

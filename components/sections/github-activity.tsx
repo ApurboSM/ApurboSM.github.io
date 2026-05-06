@@ -9,10 +9,13 @@ import { SectionTitle } from '@/components/section-title';
 import { site } from '@/lib/data/site';
 
 // react-github-calendar uses window — load on client only
-const GitHubCalendar = dynamic(() => import('react-github-calendar'), {
-  ssr: false,
-  loading: () => <CalendarSkeleton />,
-});
+const GitHubCalendar = dynamic(
+  () => import('react-github-calendar').then((m) => m.GitHubCalendar),
+  {
+    ssr: false,
+    loading: () => <CalendarSkeleton />,
+  },
+);
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -84,16 +87,12 @@ export function GithubActivity() {
                 blockRadius={2}
                 fontSize={11}
                 theme={{
-                  light: ['rgb(244 244 244)', '#bfd6ff', '#7aaaff', '#4f46e5', '#3730a3'],
-                  dark:  ['rgb(22 22 22)', '#2a2f80', '#4f46e5', '#818cf8', '#c7d2fe'],
+                  light: ['#f4f4f4', '#bfd6ff', '#7aaaff', '#4f46e5', '#3730a3'],
+                  dark:  ['#161616', '#2a2f80', '#4f46e5', '#818cf8', '#c7d2fe'],
                 }}
                 style={{
-                  // Force colors using vars
                   color: 'rgb(var(--fg) / 0.65)',
                 }}
-                hideColorLegend={false}
-                hideMonthLabels={false}
-                hideTotalCount={false}
               />
             </div>
           </div>
