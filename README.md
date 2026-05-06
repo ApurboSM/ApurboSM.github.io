@@ -10,7 +10,7 @@
 
 This is a professional portfolio website designed and developed by **S. M. Apurbo**, a Computer Science & Engineering student at BRAC University and MERN Stack Developer at DevStudio. The website features a unique space theme with animated backgrounds, interactive elements, and a comprehensive showcase of skills, projects, and achievements.
 
-**🌐 Live Portfolio: [S. M. APURBO](https://smapurbo.netlify.app/)**
+**🌐 Live Portfolio: [S. M. APURBO](https://smapurbo.me/)**
 
 ### 🌟 Key Highlights
 
