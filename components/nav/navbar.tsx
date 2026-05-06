@@ -6,6 +6,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { site } from '@/lib/data/site';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const links = [
   { href: '#work', label: 'Work', index: '01' },
@@ -106,6 +107,7 @@ export function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-2">
+            <ThemeToggle className="hidden sm:inline-flex" />
             <a
               href={`mailto:${site.email}`}
               className="hidden items-center gap-1.5 rounded-full border border-line bg-surface/40 px-3.5 py-1.5 text-xs font-medium text-fg transition-all duration-300 hover:border-accent/40 hover:bg-accent/5 hover:text-accent-hi sm:inline-flex"
@@ -113,6 +115,7 @@ export function Navbar() {
               Hire me
               <ArrowUpRight className="h-3 w-3" />
             </a>
+            <ThemeToggle className="sm:hidden" />
             <button
               type="button"
               aria-label={open ? 'Close menu' : 'Open menu'}

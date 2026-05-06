@@ -49,7 +49,7 @@ export function CardClient() {
     URL.revokeObjectURL(url);
   }
 
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&bgcolor=111111&color=ededed&data=${encodeURIComponent(
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&bgcolor=ffffff&color=0a0a0a&data=${encodeURIComponent(
     site.url,
   )}`;
 
@@ -73,13 +73,15 @@ export function CardClient() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease }}
-          className="mb-12 flex items-center gap-3 text-fg-faint"
+          className="mb-10 space-y-3"
         >
-          <span className="font-mono text-xs tracking-widest">/card</span>
-          <span className="h-px w-8 bg-line" />
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em]">
-            Virtual Business Card
-          </span>
+          <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-fg-faint">
+            <span className="h-px w-10 bg-line-2" />
+            <span>Virtual Business Card</span>
+          </div>
+          <h1 className="text-balance text-3xl font-medium tracking-tight text-fg sm:text-[2.25rem]">
+            Save my contact in a tap.
+          </h1>
         </motion.div>
 
         {/* Card */}
@@ -116,9 +118,9 @@ export function CardClient() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <h1 className="font-sans text-3xl font-medium tracking-tight text-fg sm:text-4xl">
+                  <h2 className="font-sans text-3xl font-medium tracking-tight text-fg sm:text-4xl">
                     {site.name}
-                  </h1>
+                  </h2>
                   <p className="mt-2 text-sm text-fg-muted sm:text-base">
                     {site.role}
                   </p>
@@ -194,14 +196,14 @@ export function CardClient() {
               {/* QR + socials */}
               <div className="border-t border-line pt-7">
                 <div className="grid grid-cols-[auto_1fr] items-start gap-5">
-                  <div className="overflow-hidden rounded-xl border border-line bg-bg p-2">
+                  <div className="overflow-hidden rounded-xl border border-line bg-white p-2">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={qrUrl}
                       alt="QR code to portfolio"
                       width={104}
                       height={104}
-                      className="h-26 w-26"
+                      className="h-[104px] w-[104px]"
                     />
                   </div>
                   <div className="space-y-3">

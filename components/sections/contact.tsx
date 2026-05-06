@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import {
   ArrowUpRight,
   Github,
@@ -10,6 +11,7 @@ import {
   Calendar,
   Copy,
   Check,
+  CreditCard,
 } from 'lucide-react';
 import { useState } from 'react';
 import { MaxWidth } from '@/components/max-width';
@@ -39,7 +41,7 @@ export function Contact() {
     >
       <MaxWidth>
         <SectionTitle
-          index="06"
+          index="08"
           label="Contact"
           title="Let's build something."
           description="Open to founding-engineer roles, freelance work, and meaningful collaborations. The fastest way to reach me is email."
@@ -132,9 +134,27 @@ export function Contact() {
             <div className="grid grid-cols-2 gap-y-6 border-t border-line pt-6">
               <Meta label="Based in" value={site.location} />
               <Meta label="Phone" value={site.phone} />
-              <Meta label="Card" value="/card" link="/card" />
               <Meta label="Status" value="Available" success />
+              <Meta label="Local time" value="Asia / Dhaka" />
             </div>
+
+            <Link
+              href="/card"
+              className="group inline-flex items-center justify-between gap-4 rounded-2xl border border-line bg-surface/40 px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:bg-accent/5"
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-surface text-accent-hi">
+                  <CreditCard className="h-4 w-4" />
+                </div>
+                <div className="space-y-0.5">
+                  <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-faint">
+                    Virtual card
+                  </div>
+                  <div className="text-sm text-fg">Save my contact in one tap</div>
+                </div>
+              </div>
+              <ArrowUpRight className="h-4 w-4 text-fg-faint transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
+            </Link>
           </motion.div>
         </div>
       </MaxWidth>
