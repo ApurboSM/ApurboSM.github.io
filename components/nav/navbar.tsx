@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -68,8 +69,15 @@ export function Navbar() {
             href="/"
             className="group inline-flex items-center gap-2 font-mono text-sm font-medium text-fg"
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-fg text-bg transition-colors group-hover:bg-accent group-hover:text-white">
-              S
+            <span className="relative flex h-7 w-7 shrink-0 overflow-hidden rounded-md ring-1 ring-line transition-all group-hover:ring-accent">
+              <Image
+                src="/images/hero.jpg"
+                alt={site.name}
+                fill
+                sizes="28px"
+                className="object-cover"
+                priority
+              />
             </span>
             <span className="hidden sm:inline">{site.name}</span>
           </Link>
