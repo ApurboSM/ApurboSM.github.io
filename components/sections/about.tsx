@@ -6,9 +6,9 @@ import { site } from '@/lib/data/site';
 
 const stats = [
   { label: 'Years building', value: '3+' },
-  { label: 'Projects shipped', value: '10+' },
+  { label: 'Projects shipped', value: '15+' },
   { label: 'Startup team', value: '11' },
-  { label: 'Technologies', value: '25+' },
+  { label: 'Technologies', value: '30+' },
 ];
 
 export function About() {
@@ -35,11 +35,14 @@ export function About() {
 
             <Reveal delay={0.08}>
               <p className="text-pretty text-base leading-relaxed text-fg-muted sm:text-lg">
-                Before ClassTablet, I shipped Bangladesh's first AI background-removal
-                tool, contributed to a sports-matchmaking SaaS, and trained ML models
-                for lip reading and wildlife detection. I treat every problem the same
-                way: understand it deeply, design it honestly, build it carefully, ship
-                it, and watch what it does in the real world.
+                I'm also Founding Software Engineer &amp; Technical Lead at PlayerLagbe
+                — Bangladesh's first digital platform for finding players and booking
+                turfs. Before that, I shipped Bangladesh's first AI background-removal
+                tool, trained ML models for lip reading and plant disease detection, and
+                built full-stack apps across healthcare, campus commerce, and real-time
+                multiplayer. I treat every problem the same way: understand it deeply,
+                design it honestly, build it carefully, ship it, and watch what it does
+                in the real world.
               </p>
             </Reveal>
 

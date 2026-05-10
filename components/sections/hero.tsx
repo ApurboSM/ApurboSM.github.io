@@ -80,15 +80,23 @@ export function Hero() {
             Full-stack engineer building production software end-to-end. Founding
             Software Engineer at{' '}
             <a
-              href={site.socials.github}
+              href="https://classtablet.com"
               target="_blank"
               rel="noopener noreferrer"
               className="border-b border-line-2 text-fg transition-colors hover:border-accent hover:text-accent-hi"
             >
               ClassTablet
+            </a>{' '}
+            &amp; Technical Lead at{' '}
+            <a
+              href="https://www.linkedin.com/company/greenosa-digital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-b border-line-2 text-fg transition-colors hover:border-accent hover:text-accent-hi"
+            >
+              PlayerLagbe
             </a>
-            , co-creator of Bangladesh's first AI background-removal platform, and a
-            CS senior at BRAC University.
+            {' '}— co-creator of Bangladesh's first AI tools, CS senior at BRAC University.
           </p>
 
           {/* Quick meta grid */}
