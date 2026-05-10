@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 import { MaxWidth } from '@/components/max-width';
 import { SectionTitle } from '@/components/section-title';
-import { skills } from '@/lib/data/skills';
+import { skills, type SkillItem } from '@/lib/data/skills';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -18,7 +19,7 @@ export function Skills() {
           index="04"
           label="Stack"
           title="The tools I reach for."
-          description="Categorized, not ranked. Anything I list here, I have shipped with."
+          description="Categorized, not ranked. Anything I list here, I have shipped with. Click any chip to visit its docs."
         />
 
         <div className="grid gap-x-16 gap-y-14 md:grid-cols-2">
@@ -42,20 +43,11 @@ export function Skills() {
 
               <div className="mt-6 flex flex-wrap gap-1.5">
                 {group.items.map((item, ii) => (
-                  <motion.span
-                    key={item}
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-40px' }}
-                    transition={{
-                      duration: 0.4,
-                      ease,
-                      delay: gi * 0.06 + ii * 0.025,
-                    }}
-                    className="inline-flex items-center rounded-md border border-line bg-bg/60 px-2.5 py-1 font-mono text-[12px] text-fg-muted transition-colors hover:border-line-2 hover:bg-surface-2 hover:text-fg"
-                  >
-                    {item}
-                  </motion.span>
+                  <SkillChip
+                    key={item.name}
+                    item={item}
+                    delay={gi * 0.06 + ii * 0.025}
+                  />
                 ))}
               </div>
             </motion.div>
@@ -63,5 +55,51 @@ export function Skills() {
         </div>
       </MaxWidth>
     </section>
+  );
+}
+
+function SkillChip({ item, delay }: { item: SkillItem; delay: number }) {
+  const ease = [0.16, 1, 0.3, 1] as const;
+
+  const chipClass =
+    'group inline-flex items-center gap-1 rounded-md border border-line bg-bg/60 px-2.5 py-1 font-mono text-[12px] text-fg-muted transition-all duration-200 hover:border-accent/40 hover:bg-accent/5 hover:text-accent-hi';
+
+  const inner = (
+    <>
+      {item.name}
+      {item.url && (
+        <ExternalLink className="h-2.5 w-2.5 opacity-0 transition-opacity duration-200 group-hover:opacity-60" />
+      )}
+    </>
+  );
+
+  if (item.url) {
+    return (
+      <motion.a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.4, ease, delay }}
+        className={chipClass}
+        aria-label={`${item.name} documentation`}
+      >
+        {inner}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.span
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.4, ease, delay }}
+      className="inline-flex items-center rounded-md border border-line bg-bg/60 px-2.5 py-1 font-mono text-[12px] text-fg-muted"
+    >
+      {item.name}
+    </motion.span>
   );
 }

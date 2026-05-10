@@ -1,14 +1,22 @@
-import { MapPin, Mail, Calendar } from 'lucide-react';
+import { MapPin, Mail, Calendar, CheckCircle2 } from 'lucide-react';
 import { MaxWidth } from '@/components/max-width';
 import { SectionTitle } from '@/components/section-title';
 import { Reveal } from '@/components/reveal';
 import { site } from '@/lib/data/site';
 
 const stats = [
-  { label: 'Years building', value: '3+' },
-  { label: 'Projects shipped', value: '15+' },
-  { label: 'Startup team', value: '11' },
-  { label: 'Technologies', value: '30+' },
+  { label: 'Years building', value: '3+', sub: 'since 2023' },
+  { label: 'Projects shipped', value: '15+', sub: 'to production' },
+  { label: 'ClassTablet tables', value: '100+', sub: 'Postgres schema' },
+  { label: 'User roles built', value: '6', sub: 'in ClassTablet' },
+];
+
+const highlights = [
+  "Co-founded ClassTablet — Bangladesh's first all-in-one edtech SaaS (team of 11).",
+  "Technical Lead on PlayerLagbe — Bangladesh's first sports matchmaking platform.",
+  "Built Bangladesh's first AI background-removal tool, BGRemover.",
+  'Trained ML models for lip reading (LipNet) and crop disease detection (CNN).',
+  'Full-stack across React, Next.js, Node.js, PostgreSQL, AWS, and Python AI stacks.',
 ];
 
 export function About() {
@@ -18,36 +26,49 @@ export function About() {
         <SectionTitle
           index="03"
           label="About"
-          title="A short introduction, no buzzwords."
+          title="The brief version."
         />
 
         <div className="grid gap-16 lg:grid-cols-[1.5fr_1fr] lg:gap-24">
-          <div className="space-y-7">
+          <div className="space-y-8">
             <Reveal>
               <p className="text-pretty text-lg leading-relaxed text-fg sm:text-xl">
-                I'm a CS senior at BRAC University and a Founding Software Engineer at
-                ClassTablet — a Bangladesh-first edtech platform we co-founded with a
-                small, high-trust team. I work where product, infrastructure, and AI
-                meet; I write the code that has to survive a real production incident at
-                3 AM, not the code that wins a demo.
+                CS senior at BRAC University. Founding Software Engineer at{' '}
+                <a
+                  href="https://classtablet.com/en-US"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-b border-line-2 transition-colors hover:border-accent hover:text-accent-hi"
+                >
+                  ClassTablet
+                </a>
+                {' '}and Technical Lead at{' '}
+                <a
+                  href="https://playerlagbe.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-b border-line-2 transition-colors hover:border-accent hover:text-accent-hi"
+                >
+                  PlayerLagbe
+                </a>
+                . I write code that survives production — not code that wins demos.
               </p>
             </Reveal>
 
-            <Reveal delay={0.08}>
-              <p className="text-pretty text-base leading-relaxed text-fg-muted sm:text-lg">
-                I'm also Founding Software Engineer &amp; Technical Lead at PlayerLagbe
-                — Bangladesh's first digital platform for finding players and booking
-                turfs. Before that, I shipped Bangladesh's first AI background-removal
-                tool, trained ML models for lip reading and plant disease detection, and
-                built full-stack apps across healthcare, campus commerce, and real-time
-                multiplayer. I treat every problem the same way: understand it deeply,
-                design it honestly, build it carefully, ship it, and watch what it does
-                in the real world.
-              </p>
+            {/* Highlights */}
+            <Reveal delay={0.06}>
+              <ul className="space-y-3">
+                {highlights.map((h) => (
+                  <li key={h} className="flex items-start gap-3 text-sm leading-relaxed text-fg-muted">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent/70" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
 
-            <Reveal delay={0.16}>
-              <div className="mt-2 flex flex-wrap gap-2 pt-2">
+            <Reveal delay={0.12}>
+              <div className="flex flex-wrap gap-2 pt-1">
                 <Pill icon={<MapPin className="h-3.5 w-3.5" />}>
                   {site.location}
                 </Pill>
@@ -79,6 +100,11 @@ export function About() {
                   <dd className="mt-2 font-sans text-3xl font-medium tracking-tight text-fg sm:text-4xl">
                     {s.value}
                   </dd>
+                  {s.sub && (
+                    <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-fg-faint">
+                      {s.sub}
+                    </dd>
+                  )}
                 </div>
               ))}
             </dl>
