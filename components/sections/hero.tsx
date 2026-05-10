@@ -39,14 +39,14 @@ export function Hero() {
       <div className="grid-bg pointer-events-none absolute inset-0 -z-10" />
 
       <MaxWidth className="relative z-10">
-        <div className="grid gap-10 lg:grid-cols-[320px_1fr] lg:items-center lg:gap-16 xl:grid-cols-[360px_1fr]">
+        <div className="grid gap-10 lg:grid-cols-[1fr_300px] lg:items-center lg:gap-16 xl:grid-cols-[1fr_340px]">
 
-          {/* ── Photo (left on desktop, top on mobile) ── */}
+          {/* ── Photo (right on desktop, bottom on mobile) ── */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.12 }}
-            className="order-2 mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:order-1 lg:max-w-none"
+            className="order-2 mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-none"
           >
             <div className="group relative overflow-hidden rounded-3xl border border-line shadow-[0_24px_60px_-12px_rgba(0,0,0,0.45)]"
               style={{ aspectRatio: '4/5' }}
@@ -83,8 +83,8 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* ── Text content (right on desktop) ── */}
-          <div className="order-1 lg:order-2">
+          {/* ── Text content (left on desktop) ── */}
+          <div className="order-1">
             {/* Available pill — mobile only (desktop shows badge on photo) */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -108,10 +108,15 @@ export function Hero() {
               {heroLines.map((line, i) => (
                 <span
                   key={i}
-                  className="block overflow-hidden"
+                  className="block"
                   style={{ paddingBottom: '0.05em' }}
                 >
-                  <SplitWords line={line} delay={0.2 + i * 0.08} accent={i === 1} />
+                  {/* last line's overflow is intentionally NOT hidden so the dot can drop in */}
+                  <SplitWords
+                    line={line}
+                    delay={0.2 + i * 0.08}
+                    accent={i === heroLines.length - 1}
+                  />
                 </span>
               ))}
             </h1>
@@ -239,32 +244,43 @@ function SplitWords({
 }) {
   const words = line.split(' ');
   return (
-    <span className="inline-block">
+    // No overflow-hidden here — the dot needs to animate freely from above
+    <span className="inline-flex items-baseline flex-wrap">
       {words.map((word, wi) => (
         <span key={wi} className="inline-block">
-          <motion.span
-            initial={{ y: '110%' }}
-            animate={{ y: '0%' }}
-            transition={{
-              duration: 0.85,
-              ease,
-              delay: delay + wi * 0.08,
-            }}
-            className="inline-block"
-          >
-            {word}
-          </motion.span>
-          {wi < words.length - 1 && '\u00A0'}
-          {wi === words.length - 1 && accent && (
+          {/* overflow-hidden per word clips the slide-up letter animation */}
+          <span className="inline-block overflow-hidden" style={{ paddingBottom: '0.06em' }}>
             <motion.span
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5, ease, delay: delay + 0.6 }}
-              className="ml-0.5 inline-block h-2 w-2 rounded-full bg-accent align-baseline sm:h-3 sm:w-3"
-            />
-          )}
+              initial={{ y: '110%' }}
+              animate={{ y: '0%' }}
+              transition={{
+                duration: 0.85,
+                ease,
+                delay: delay + wi * 0.08,
+              }}
+              className="inline-block"
+            >
+              {word}
+            </motion.span>
+          </span>
+          {wi < words.length - 1 && '\u00A0'}
         </span>
       ))}
+      {/* Accent dot — drops from far above with spring bounce */}
+      {accent && (
+        <motion.span
+          initial={{ y: -900 }}
+          animate={{ y: 0 }}
+          transition={{
+            type: 'spring',
+            stiffness: 180,
+            damping: 14,
+            mass: 1.4,
+            delay: delay + 0.55,
+          }}
+          className="ml-1 inline-block h-2 w-2 self-center rounded-full bg-accent sm:h-3 sm:w-3"
+        />
+      )}
     </span>
   );
 }
