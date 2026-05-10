@@ -266,17 +266,15 @@ function SplitWords({
           {wi < words.length - 1 && '\u00A0'}
         </span>
       ))}
-      {/* Accent dot — drops from far above with spring bounce */}
+      {/* Accent dot — drops from top, lands on the "." period, bounces back to position */}
       {accent && (
         <motion.span
-          initial={{ y: -900 }}
-          animate={{ y: 0 }}
+          animate={{ y: [-900, 14, -4, 0] }}
           transition={{
-            type: 'spring',
-            stiffness: 180,
-            damping: 14,
-            mass: 1.4,
-            delay: delay + 0.55,
+            duration: 1.8,
+            times: [0, 0.68, 0.84, 1],
+            ease: ['easeIn', [0.22, 1.4, 0.36, 1], [0.4, 0, 0.2, 1]],
+            delay: delay + 0.5,
           }}
           className="ml-1 inline-block h-2 w-2 self-center rounded-full bg-accent sm:h-3 sm:w-3"
         />
