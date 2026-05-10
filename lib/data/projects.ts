@@ -28,7 +28,7 @@ export const projects: Project[] = [
       'Bangladesh-first edtech category-defining platform. 11-person team. Production codebase serving teachers, students, parents, and institutions.',
     stack: ['TypeScript', 'Next.js', 'PostgreSQL', 'Drizzle ORM', 'AWS ECS', 'AWS IVS', 'GPT-4o', 'SSLCommerz'],
     links: [
-      { label: 'classtablet.com', href: 'https://classtablet.com' },
+      { label: 'classtablet.com', href: 'https://classtablet.com/en-US' },
       { label: 'app.classtablet.com', href: 'https://app.classtablet.com' },
       { label: 'GitHub', href: 'https://github.com/PixL-Bangladesh/classtablet' },
     ],
@@ -50,7 +50,8 @@ export const projects: Project[] = [
       "Bangladesh's 1st digital sports matchmaking platform shipped to production.",
     stack: ['React', 'Node.js', 'MongoDB', 'REST API', 'Expo'],
     links: [
-      { label: 'Greenosa Digital', href: 'https://www.linkedin.com/company/greenosa-digital' },
+      { label: 'playerlagbe.com', href: 'https://playerlagbe.com/' },
+      { label: 'Greenosa Digital', href: 'https://greenosadigital.com/' },
     ],
   },
   {
@@ -67,7 +68,7 @@ export const projects: Project[] = [
       "Bangladesh's first AI-powered background removal product, shipped at bgremover.pro.",
     stack: ['React', 'Node.js', 'AI Segmentation', 'HEIC', 'Image Processing'],
     links: [
-      { label: 'Live', href: 'https://bgremover.pro' },
+      { label: 'bgremover.pro', href: 'https://bgremover.pro/' },
       { label: 'GitHub', href: 'https://github.com/ApurboSM/BGRemover' },
     ],
   },
@@ -84,7 +85,27 @@ export const projects: Project[] = [
     impact:
       'A clean, single-tap path for UIU students to get exactly the books and supplies they need.',
     stack: ['React', 'Node.js', 'MongoDB', 'Pathao API', 'RedX API'],
-    links: [{ label: 'GitHub', href: 'https://github.com/ApurboSM/UIUBookNest' }],
+    links: [
+      { label: 'uiubooknest.netlify.app', href: 'https://uiubooknest.netlify.app/' },
+      { label: 'GitHub', href: 'https://github.com/ApurboSM/UIUBookNest' },
+    ],
+  },
+  {
+    slug: 'rentwheels',
+    title: 'RentWheels',
+    year: '2024',
+    role: 'Full-Stack',
+    category: 'MERN · Marketplace',
+    problem:
+      'Renting vehicles in Bangladesh means calling unknown numbers from Facebook posts — no booking system, no receipts, no trust signals.',
+    approach:
+      'Built a full-stack vehicle rental platform on the MERN stack with user authentication, a booking system, and QR-coded receipt generation.',
+    impact:
+      'End-to-end rental flow from browsing to confirmed booking with verifiable digital receipts.',
+    stack: ['MongoDB', 'Express.js', 'React', 'Node.js', 'QR Codes', 'JWT'],
+    links: [
+      { label: 'rentwheels007.netlify.app', href: 'https://rentwheels007.netlify.app/' },
+    ],
   },
   {
     slug: 'plant-disease',

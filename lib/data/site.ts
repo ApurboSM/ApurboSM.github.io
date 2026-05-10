@@ -6,7 +6,7 @@ export const site = {
   description:
     'Full-stack engineer and AI/ML developer. Founding Software Engineer at ClassTablet. CS at BRAC University. Building products that ship.',
   location: 'Dhaka, Bangladesh',
-  email: 'sm.apurbo@g.bracu.ac.bd',
+  email: 'smapurbo1497@gmail.com',
   phone: '+8801311035024',
   url: 'https://smapurbo.me',
   socials: {

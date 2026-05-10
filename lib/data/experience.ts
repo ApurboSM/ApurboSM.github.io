@@ -60,11 +60,11 @@ export const experience: Experience[] = [
       { label: 'Feature pillars', value: '10+' },
     ],
     links: [
-      { label: 'classtablet.com', href: 'https://classtablet.com' },
+      { label: 'classtablet.com', href: 'https://classtablet.com/en-US' },
       { label: 'app.classtablet.com', href: 'https://app.classtablet.com' },
       { label: 'GitHub', href: 'https://github.com/PixL-Bangladesh/classtablet' },
     ],
-    url: 'https://classtablet.com',
+    url: 'https://classtablet.com/en-US',
     monogram: 'CT',
     highlighted: true,
   },
@@ -84,7 +84,7 @@ export const experience: Experience[] = [
       'Maintain strict confidentiality and adhere to documented data-security protocols.',
     ],
     stack: ['Python', 'Data Validation', 'ML Workflows'],
-    url: 'https://www.nyntax.com',
+    url: 'https://www.nyntax.com/',
     monogram: 'NY',
   },
   {
@@ -104,7 +104,7 @@ export const experience: Experience[] = [
       'Operating with modern frameworks and best practices to keep the codebase maintainable as the platform grows.',
     ],
     stack: ['React', 'Node.js', 'MongoDB', 'REST API', 'Expo'],
-    url: 'https://www.linkedin.com/company/greenosa-digital',
+    url: 'https://greenosadigital.com/',
     monogram: 'GD',
   },
   {
