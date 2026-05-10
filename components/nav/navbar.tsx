@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -19,6 +20,13 @@ const links = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+  const navLinks = links.map((l) => ({
+    ...l,
+    href: isHome ? l.href : `/${l.href}`,
+  }));
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>('');
@@ -85,8 +93,8 @@ export function Navbar() {
           {/* Desktop nav */}
           <nav className="hidden items-center md:flex">
             <ul className="flex items-center gap-1 rounded-full border border-line bg-surface/40 px-1.5 py-1 backdrop-blur-md">
-              {links.map((l) => {
-                const isActive = active === l.href.slice(1);
+              {navLinks.map((l) => {
+                const isActive = isHome && active === l.href.slice(1);
                 return (
                   <li key={l.href}>
                     <a
@@ -147,7 +155,7 @@ export function Navbar() {
         className="fixed inset-0 z-40 bg-bg/90 backdrop-blur-xl md:hidden"
       >
         <nav className="flex h-full flex-col items-start justify-center gap-2 px-8 pt-20">
-          {links.map((l, i) => (
+          {navLinks.map((l, i) => (
             <motion.a
               key={l.href}
               href={l.href}

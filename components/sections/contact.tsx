@@ -201,8 +201,13 @@ function Meta({
       <div className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-fg-faint">
         {label}
       </div>
-      <div className="flex items-center gap-2 text-sm">
-        {success && <span className="h-1.5 w-1.5 rounded-full bg-success" />}
+      <div className="flex items-center gap-1.5 text-sm">
+        {success && (
+          <span className="relative flex h-2 w-2 shrink-0">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+        </span>
+      )}
         <span className={success ? 'text-success' : 'text-fg'}>{value}</span>
       </div>
     </div>

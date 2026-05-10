@@ -80,7 +80,7 @@ export function Hero() {
             Full-stack engineer building production software end-to-end. Founding
             Software Engineer at{' '}
             <a
-              href="https://classtablet.com"
+              href="https://classtablet.com/en-US"
               target="_blank"
               rel="noopener noreferrer"
               className="border-b border-line-2 text-fg transition-colors hover:border-accent hover:text-accent-hi"
@@ -89,7 +89,7 @@ export function Hero() {
             </a>{' '}
             &amp; Technical Lead at{' '}
             <a
-              href="https://www.linkedin.com/company/greenosa-digital"
+              href="https://playerlagbe.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="border-b border-line-2 text-fg transition-colors hover:border-accent hover:text-accent-hi"
@@ -130,16 +130,44 @@ export function Hero() {
         </motion.div>
       </MaxWidth>
 
-      {/* Scroll indicator */}
+      {/* Mouse scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 1.2 }}
-        className="pointer-events-none absolute bottom-10 left-1/2 z-0 -translate-x-1/2"
+        transition={{ duration: 1.2, delay: 1.4 }}
+        className="pointer-events-none absolute bottom-10 left-1/2 z-0 flex -translate-x-1/2 flex-col items-center gap-1.5"
       >
-        <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg-faint">
+        <svg
+          width="24"
+          height="38"
+          viewBox="0 0 24 38"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="text-fg-faint"
+        >
+          <rect
+            x="1"
+            y="1"
+            width="22"
+            height="36"
+            rx="11"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          />
+          <motion.rect
+            x="10.5"
+            y="7"
+            width="3"
+            height="6"
+            rx="1.5"
+            fill="currentColor"
+            animate={{ y: [7, 13, 7] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </svg>
+        <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-fg-faint">
           Scroll
-        </div>
+        </span>
       </motion.div>
     </section>
   );
