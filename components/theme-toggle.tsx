@@ -11,7 +11,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
   return (
     <button
       type="button"
-      onClick={toggle}
+      onClick={(e) => toggle(e)}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
       title={`Switch to ${isDark ? 'light' : 'dark'} theme`}
       className={`group relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface/40 text-fg-muted backdrop-blur-md transition-colors hover:border-line-2 hover:text-fg ${className}`}
@@ -22,7 +22,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
           initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
           animate={{ rotate: 0, opacity: 1, scale: 1 }}
           exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
-          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inline-flex"
         >
           {isDark ? (

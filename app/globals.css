@@ -106,11 +106,53 @@
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
   }
 
-  /* Theme transition smoothness */
+  /* CSS-only fallback transition (non-VT browsers) */
   .theme-transition,
   .theme-transition *,
   .theme-transition *::before,
   .theme-transition *::after {
-    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, fill 0.4s ease, stroke 0.4s ease !important;
+    transition:
+      background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color     0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      color            0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      fill             0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      stroke           0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   View Transitions — cinematic circular theme reveal
+   The new theme expands as a circle from the toggle button (--vt-x, --vt-y).
+   Old snapshot stays flat underneath; new snapshot clips in on top.
+   Works in Chrome 111+, Edge 111+. Falls back gracefully to CSS transitions.
+───────────────────────────────────────────────────────────────────────── */
+@keyframes vt-circle-in {
+  from { clip-path: circle(0% at var(--vt-x, 50%) var(--vt-y, 10%)); }
+  to   { clip-path: circle(160% at var(--vt-x, 50%) var(--vt-y, 10%)); }
+}
+
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+::view-transition-new(root) {
+  animation: vt-circle-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* New theme paints on top */
+  mix-blend-mode: normal;
+  z-index: 9999;
+}
+
+::view-transition-old(root) {
+  /* Old theme fades out gently while circle expands over it */
+  animation: vt-fade-out 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+  z-index: 1;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root),
+  ::view-transition-old(root) {
+    animation: none;
   }
 }
