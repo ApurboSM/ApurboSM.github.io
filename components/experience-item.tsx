@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { ArrowUpRight, MapPin, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
 import { type Experience } from '@/lib/data/experience';
 import { cn } from '@/lib/utils';
 
@@ -12,13 +11,26 @@ export function ExperienceItem({
   item,
   index,
   isLast = false,
+  isOpen = false,
+  onToggle,
 }: {
   item: Experience;
   index: number;
   isLast?: boolean;
+  /** Controlled: whether this card is expanded */
+  isOpen?: boolean;
+  /** Called when the user clicks to toggle */
+  onToggle?: () => void;
 }) {
-  const [open, setOpen] = useState(false);
-  const hasDetails = item.bullets.length > 0 || item.stack.length > 0 || (item.links && item.links.length > 0) || (item.stats && item.stats.length > 0);
+  const hasDetails =
+    item.bullets.length > 0 ||
+    item.stack.length > 0 ||
+    (item.links && item.links.length > 0) ||
+    (item.stats && item.stats.length > 0);
+
+  function handleClick() {
+    if (hasDetails) onToggle?.();
+  }
 
   return (
     <motion.li
@@ -32,8 +44,9 @@ export function ExperienceItem({
       <div className="relative flex flex-col items-center">
         <div
           className={cn(
-            'relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-surface text-[10.5px] font-mono font-semibold text-fg sm:h-11 sm:w-11 sm:rounded-xl sm:text-xs',
+            'relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-surface text-[10.5px] font-mono font-semibold text-fg transition-colors duration-300 sm:h-11 sm:w-11 sm:rounded-xl sm:text-xs',
             item.highlighted && 'border-accent/40 bg-accent/5 text-accent-hi',
+            isOpen && 'border-accent/50 bg-accent/10',
           )}
         >
           {item.monogram}
@@ -44,8 +57,13 @@ export function ExperienceItem({
       {/* Content card */}
       <div
         className={cn(
-          'group relative overflow-hidden rounded-2xl border border-line bg-surface transition-colors duration-300 hover:border-line-2',
-          item.highlighted && 'border-accent/30 bg-gradient-to-br from-surface to-surface-2',
+          'group relative overflow-hidden rounded-2xl border bg-surface transition-all duration-300',
+          isOpen
+            ? 'border-accent/40 shadow-[0_0_0_1px_rgb(var(--accent)/0.15),0_8px_32px_rgb(var(--accent)/0.08)]'
+            : 'border-line hover:border-line-2',
+          item.highlighted &&
+            !isOpen &&
+            'border-accent/30 bg-gradient-to-br from-surface to-surface-2',
         )}
       >
         {item.highlighted && (
@@ -55,12 +73,12 @@ export function ExperienceItem({
         {/* Compact header — always visible */}
         <button
           type="button"
-          onClick={() => hasDetails && setOpen((v) => !v)}
+          onClick={handleClick}
           className={cn(
             'flex w-full items-start justify-between gap-4 p-5 text-left sm:p-6',
             !hasDetails && 'cursor-default',
           )}
-          aria-expanded={open}
+          aria-expanded={isOpen}
         >
           <div className="min-w-0 flex-1 space-y-1.5">
             {item.highlighted && (
@@ -88,7 +106,9 @@ export function ExperienceItem({
                   rel="noopener noreferrer"
                   className={cn(
                     'inline-flex items-center gap-0.5 font-medium transition-colors',
-                    item.highlighted ? 'text-accent-hi hover:text-accent' : 'text-fg hover:text-accent-hi',
+                    item.highlighted
+                      ? 'text-accent-hi hover:text-accent'
+                      : 'text-fg hover:text-accent-hi',
                   )}
                 >
                   {item.company}
@@ -112,21 +132,21 @@ export function ExperienceItem({
               <ChevronDown
                 className={cn(
                   'h-4 w-4 text-fg-faint transition-all duration-300',
-                  open && 'rotate-180 text-fg',
+                  isOpen && 'rotate-180 text-accent',
                 )}
               />
             )}
           </div>
         </button>
 
-        {/* Description — always shown, but compact */}
+        {/* Description — always shown */}
         <div className="border-t border-line px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
           <p className="text-pretty text-[13.5px] leading-relaxed text-fg-muted">
             {item.description}
           </p>
 
           {/* Inline stack chips on collapsed state (truncated) */}
-          {!open && item.stack.length > 0 && (
+          {!isOpen && item.stack.length > 0 && (
             <div className="mt-3.5 flex flex-wrap gap-1">
               {item.stack.slice(0, 6).map((s) => (
                 <span
@@ -149,8 +169,8 @@ export function ExperienceItem({
         <motion.div
           initial={false}
           animate={{
-            height: open ? 'auto' : 0,
-            opacity: open ? 1 : 0,
+            height: isOpen ? 'auto' : 0,
+            opacity: isOpen ? 1 : 0,
           }}
           transition={{ duration: 0.4, ease }}
           className="overflow-hidden"

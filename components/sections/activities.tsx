@@ -12,7 +12,7 @@ const activities = [
     role: 'Executive, Creative Team',
     org: 'BRAC University Computer Club (BUCC)',
     orgUrl: 'https://www.linkedin.com/company/brac-university-computer-club/',
-    period: '2023 – Present',
+    period: '2023 – 2026',
     description:
       "Leading creative direction and visual content production for one of the largest university tech clubs in Bangladesh.",
     monogram: 'BC',
@@ -21,7 +21,7 @@ const activities = [
     role: 'Senior Executive, Photography',
     org: 'BRAC University Computer Club (BUCC)',
     orgUrl: 'https://www.linkedin.com/company/brac-university-computer-club/',
-    period: '2023 – Present',
+    period: '2023 – 2026',
     description:
       "Overseeing photography operations, event coverage, and building the visual narrative of the club's activities.",
     monogram: 'BC',

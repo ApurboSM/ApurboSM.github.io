@@ -112,9 +112,9 @@ export const experience: Experience[] = [
     role: 'MERN Stack Developer',
     type: 'Remote · Part-time',
     location: 'Remote',
-    period: 'Nov 2023 — Present',
+    period: 'Nov 2023 — 2025',
     start: '2023-11',
-    end: 'present',
+    end: '2025-12',
     description:
       'Long-running part-time engagement building and maintaining MERN-stack web applications.',
     bullets: [

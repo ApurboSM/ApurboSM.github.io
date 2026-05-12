@@ -31,7 +31,7 @@ export function Hero() {
     <section
       ref={wrapRef}
       id="home"
-      className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden pt-28 pb-20 sm:pt-32"
+      className="relative isolate flex min-h-[100svh] flex-col justify-center overflow-hidden pb-16 pt-24 sm:pb-20 sm:pt-32"
     >
       {/* Spotlight */}
       <div className="hero-spotlight pointer-events-none absolute inset-0 -z-10" />
@@ -39,79 +39,37 @@ export function Hero() {
       <div className="grid-bg pointer-events-none absolute inset-0 -z-10" />
 
       <MaxWidth className="relative z-10">
-        <div className="grid gap-10 lg:grid-cols-[1fr_300px] lg:items-center lg:gap-16 xl:grid-cols-[1fr_340px]">
+        {/*
+          Layout:
+          - xs/sm  (<lg) : single column, text on top, photo below (hidden on xs landscape)
+          - lg+          : two columns, text left, photo right
+        */}
+        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[1fr_280px] lg:gap-14 xl:grid-cols-[1fr_320px] xl:gap-16">
 
-          {/* ── Photo (right on desktop, bottom on mobile) ── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.9, ease, delay: 0.12 }}
-            className="order-2 mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-none"
-          >
-            <div className="group relative overflow-hidden rounded-3xl border border-line shadow-[0_24px_60px_-12px_rgba(0,0,0,0.45)]"
-              style={{ aspectRatio: '4/5' }}
-            >
-              {/* Accent overlay on hover */}
-              <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg/70 via-transparent to-transparent" />
-              <div className="absolute inset-0 z-10 bg-gradient-to-br from-accent/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              <Image
-                src="/images/hero.jpg"
-                alt={site.name}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 640px) 240px, (max-width: 1024px) 280px, 360px"
-                priority
-              />
-              {/* Name card on photo */}
-              <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-between px-4 pb-4 pt-8">
-                <div>
-                  <p className="font-sans text-sm font-medium text-white/90">{site.name}</p>
-                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/55">
-                    {site.role}
-                  </p>
-                </div>
-                <div className="flex items-center gap-1.5 rounded-full bg-black/40 px-2.5 py-1 backdrop-blur-sm">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
-                  </span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/70">
-                    Open
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ── Text content (left on desktop) ── */}
-          <div className="order-1">
-            {/* Available pill — mobile only (desktop shows badge on photo) */}
+          {/* ── Text ── */}
+          <div className="order-1 min-w-0">
+            {/* Available pill */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease, delay: 0.1 }}
-              className="mb-8 flex lg:hidden"
+              className="mb-6 flex sm:mb-8"
             >
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 px-3.5 py-1.5 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 px-3 py-1.5 backdrop-blur-sm sm:px-3.5">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
                 </span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-fg-muted">
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-fg-muted sm:text-[11px] sm:tracking-[0.18em]">
                   Available for opportunities
                 </span>
               </div>
             </motion.div>
 
             {/* Headline */}
-            <h1 className="font-sans font-semibold leading-[0.92] tracking-tightest-2 text-balance text-[clamp(2.6rem,5.5vw,5.25rem)]">
+            <h1 className="font-sans font-semibold leading-[0.92] tracking-tightest-2 text-balance text-[clamp(2.2rem,8vw,5.25rem)] sm:text-[clamp(2.6rem,7vw,5.25rem)] lg:text-[clamp(2.4rem,4.5vw,5.25rem)]">
               {heroLines.map((line, i) => (
-                <span
-                  key={i}
-                  className="block"
-                  style={{ paddingBottom: '0.05em' }}
-                >
-                  {/* last line's overflow is intentionally NOT hidden so the dot can drop in */}
+                <span key={i} className="block" style={{ paddingBottom: '0.05em' }}>
                   <SplitWords
                     line={line}
                     delay={0.2 + i * 0.08}
@@ -126,9 +84,9 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease, delay: 0.5 }}
-              className="mt-7"
+              className="mt-5 sm:mt-7"
             >
-              <p className="max-w-lg text-pretty text-base leading-relaxed text-fg-muted sm:text-lg">
+              <p className="max-w-xl text-pretty text-sm leading-relaxed text-fg-muted sm:text-base lg:text-lg">
                 Full-stack engineer building production software end-to-end. Founding
                 Software Engineer at{' '}
                 <a
@@ -152,12 +110,12 @@ export function Hero() {
               </p>
             </motion.div>
 
-            {/* Quick meta — desktop */}
+            {/* Quick meta strip */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease, delay: 0.55 }}
-              className="mt-6 hidden items-center gap-6 text-sm lg:flex"
+              className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 sm:mt-6"
             >
               <MetaItem label="Based in" value="Dhaka, BD" />
               <span className="h-3 w-px bg-line-2" />
@@ -171,11 +129,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease, delay: 0.62 }}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              className="mt-6 flex flex-wrap items-center gap-2.5 sm:mt-8 sm:gap-3"
             >
               <Button asChild size="lg" variant="accent">
-                <a href="#work">
-                  View Selected Work
+                <a href="#experience">
+                  View My Work
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </a>
               </Button>
@@ -187,6 +145,48 @@ export function Hero() {
               </Button>
             </motion.div>
           </div>
+
+          {/* ── Photo — hidden on small landscape, shown from sm portrait + lg ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease, delay: 0.14 }}
+            className="order-2 mx-auto hidden w-full max-w-[200px] sm:block sm:max-w-[240px] lg:max-w-none"
+          >
+            <div
+              className="group relative overflow-hidden rounded-2xl border border-line shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] sm:rounded-3xl"
+              style={{ aspectRatio: '4/5' }}
+            >
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg/75 via-transparent to-transparent" />
+              <div className="absolute inset-0 z-10 bg-gradient-to-br from-accent/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <Image
+                src="/images/hero.jpg"
+                alt={site.name}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 640px) 200px, (max-width: 1024px) 240px, 320px"
+                priority
+              />
+              {/* Name card overlay */}
+              <div className="absolute bottom-0 left-0 right-0 z-20 flex items-center justify-between px-3 pb-3 pt-6 sm:px-4 sm:pb-4">
+                <div>
+                  <p className="font-sans text-xs font-medium text-white/90 sm:text-sm">{site.name}</p>
+                  <p className="mt-0.5 font-mono text-[9px] uppercase tracking-[0.12em] text-white/55 sm:text-[10px]">
+                    {site.role}
+                  </p>
+                </div>
+                <div className="flex items-center gap-1.5 rounded-full bg-black/40 px-2 py-0.5 backdrop-blur-sm sm:px-2.5 sm:py-1">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
+                  </span>
+                  <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-white/70 sm:text-[9px]">
+                    Open
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </MaxWidth>
 
@@ -244,43 +244,50 @@ function SplitWords({
 }) {
   const words = line.split(' ');
   return (
-    // No overflow-hidden here — the dot needs to animate freely from above
     <span className="inline-flex items-baseline flex-wrap">
-      {words.map((word, wi) => (
-        <span key={wi} className="inline-block">
-          {/* overflow-hidden per word clips the slide-up letter animation */}
-          <span className="inline-block overflow-hidden" style={{ paddingBottom: '0.06em' }}>
-            <motion.span
-              initial={{ y: '110%' }}
-              animate={{ y: '0%' }}
-              transition={{
-                duration: 0.85,
-                ease,
-                delay: delay + wi * 0.08,
-              }}
-              className="inline-block"
-            >
-              {word}
-            </motion.span>
+      {words.map((word, wi) => {
+        const isLast = wi === words.length - 1;
+        return (
+          <span key={wi} className="inline-block">
+            {/* overflow-hidden per word clips the slide-up letter animation */}
+            <span className="inline-block overflow-hidden" style={{ paddingBottom: '0.06em' }}>
+              <motion.span
+                initial={{ y: '110%' }}
+                animate={{ y: '0%' }}
+                transition={{
+                  duration: 0.85,
+                  ease,
+                  delay: delay + wi * 0.08,
+                }}
+                className="inline-block"
+              >
+                {word}
+              </motion.span>
+            </span>
+            {/*
+              Accent dot lives INSIDE the last word's outer span so it is
+              always on the same flex line as "PROMISES." and never wraps.
+              align-baseline = vertical-align:baseline → dot's bottom edge
+              sits at the text baseline (same level as the period ".").
+            */}
+            {isLast && accent && (
+              <motion.span
+                initial={{ y: -900 }}
+                animate={{ y: 0 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 260,
+                  damping: 13,
+                  mass: 1.2,
+                  delay: delay + words.length * 0.08 + 0.3,
+                }}
+                className="ml-1.5 inline-block h-2.5 w-2.5 align-baseline rounded-full bg-accent sm:h-3 sm:w-3"
+              />
+            )}
+            {wi < words.length - 1 && '\u00A0'}
           </span>
-          {wi < words.length - 1 && '\u00A0'}
-        </span>
-      ))}
-      {/* Accent dot — drops from top, overshoots to period level, springs back to y=0 */}
-      {accent && (
-        <motion.span
-          initial={{ y: -900 }}
-          animate={{ y: 0 }}
-          transition={{
-            type: 'spring',
-            stiffness: 260,
-            damping: 13,
-            mass: 1.2,
-            delay: delay + 0.5,
-          }}
-          className="ml-1.5 inline-block h-2.5 w-2.5 self-end rounded-full bg-accent sm:h-3 sm:w-3"
-        />
-      )}
+        );
+      })}
     </span>
   );
 }
