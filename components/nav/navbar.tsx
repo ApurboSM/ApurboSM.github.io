@@ -11,12 +11,13 @@ import { site } from '@/lib/data/site';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 const links = [
-  { href: '#work', label: 'Work', index: '01' },
-  { href: '#process', label: 'Process', index: '02' },
+  { href: '#experience', label: 'Career', index: '01' },
+  { href: '#work', label: 'Work', index: '02' },
   { href: '#about', label: 'About', index: '03' },
   { href: '#skills', label: 'Stack', index: '04' },
-  { href: '#experience', label: 'Career', index: '06' },
-  { href: '#contact', label: 'Contact', index: '08' },
+  { href: '#activities', label: 'Activities', index: '05' },
+  { href: '#education', label: 'Education', index: '06' },
+  { href: '#contact', label: 'Contact', index: '07' },
 ];
 
 export function Navbar() {

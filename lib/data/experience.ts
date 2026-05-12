@@ -125,23 +125,4 @@ export const experience: Experience[] = [
     stack: ['MongoDB', 'Express.js', 'React', 'Node.js'],
     monogram: 'DS',
   },
-  {
-    company: 'BRAC University Computer Club (BUCC)',
-    role: 'Senior Executive, Photography · Executive, Creative Team',
-    type: 'Volunteer',
-    location: 'BRAC University, Dhaka',
-    period: '2023 — Present',
-    start: '2023-01',
-    end: 'present',
-    description:
-      "Active member of BRAC University's premier tech & creative club — leading photography coverage and contributing to the creative team across club events, hackathons, and workshops.",
-    bullets: [
-      'Lead event photography for BUCC hackathons, seminars, and campus tech events.',
-      'Design digital content and creative assets for club campaigns and social media.',
-      'Collaborate with a cross-functional team of designers, developers, and event planners.',
-    ],
-    stack: ['Photography', 'Adobe Lightroom', 'Photoshop', 'Figma', 'Content Creation'],
-    url: 'https://www.linkedin.com/company/brac-university-computer-club/',
-    monogram: 'BC',
-  },
 ];

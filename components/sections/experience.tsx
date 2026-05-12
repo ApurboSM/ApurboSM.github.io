@@ -11,7 +11,7 @@ export function Experience() {
     >
       <MaxWidth>
         <SectionTitle
-          index="06"
+          index="01"
           label="Career"
           title="Where I've built things."
           description="Compact career path. Click any role to expand bullets, stack and links."
