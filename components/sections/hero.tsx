@@ -273,7 +273,7 @@ function SplitWords({
             {isLast && accent && (
               <motion.span
                 initial={{ y: -900 }}
-                animate={{ y: 0 }}
+                animate={{ y: -8 }}
                 transition={{
                   type: 'spring',
                   stiffness: 260,
