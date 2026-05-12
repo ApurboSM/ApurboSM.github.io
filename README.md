@@ -1,226 +1,127 @@
+<div align="center">
+
 # S. M. Apurbo — Portfolio
 
-A professional, modern portfolio website for S. M. Apurbo — Full-Stack Developer & AI/ML Engineer.
+**Full-Stack Software Engineer · AI / ML Engineer · MERN Developer**
 
-**Live:** [smapurbo.me](https://smapurbo.me)
-**Repo:** [github.com/ApurboSM/ApurboSM.github.io](https://github.com/ApurboSM/ApurboSM.github.io)
+[**smapurbo.com**](https://smapurbo.com) &nbsp;·&nbsp; Dhaka, Bangladesh &nbsp;·&nbsp; Available worldwide
 
----
+[![Live site](https://img.shields.io/badge/live-smapurbo.com-6366f1?style=flat-square)](https://smapurbo.com)
+[![Stack](https://img.shields.io/badge/Next.js-14-000?style=flat-square&logo=nextdotjs)](https://nextjs.org)
+[![TS](https://img.shields.io/badge/TypeScript-5-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind](https://img.shields.io/badge/Tailwind-3-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
+[![Deploy](https://img.shields.io/badge/GitHub_Pages-Actions-181717?style=flat-square&logo=github)](https://pages.github.com)
 
-## Stack
-
-- **Framework** — Next.js 14 (App Router, **static export**)
-- **Language** — TypeScript
-- **Styling** — Tailwind CSS (RGB-triplet token system)
-- **Theming** — Dark + Light, with persisted toggle
-- **Animation** — Framer Motion
-- **UI Primitives** — ShadCN UI patterns
-- **Icons** — Lucide
-- **Fonts** — Geist Sans + Geist Mono (`geist` package)
-- **GitHub Calendar** — `react-github-calendar`
-- **Deploy** — GitHub Pages (via GitHub Actions)
+</div>
 
 ---
 
-## Project Structure
+## About
 
-```
-Portfolio/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml              # Build + publish to GitHub Pages
-├── app/
-│   ├── layout.tsx                  # Root layout, fonts, theme bootstrap, metadata
-│   ├── page.tsx                    # Home (composes all sections)
-│   ├── globals.css                 # Tailwind layers + design tokens
-│   ├── sitemap.ts                  # Auto-generated sitemap.xml
-│   ├── robots.ts                   # Auto-generated robots.txt
-│   └── card/
-│       ├── page.tsx                # Virtual business card route
-│       └── card-client.tsx
-│
-├── components/
-│   ├── ui/                         # ShadCN-style primitives
-│   ├── nav/
-│   │   ├── navbar.tsx              # Sticky nav + theme toggle
-│   │   └── footer.tsx
-│   ├── sections/
-│   │   ├── hero.tsx                # Cursor-aware spotlight hero
-│   │   ├── selected-work.tsx       # Project cards
-│   │   ├── engineering-process.tsx # Signature 4-step section
-│   │   ├── about.tsx
-│   │   ├── skills.tsx
-│   │   ├── tech-network.tsx        # Interactive SVG tech graph
-│   │   ├── experience.tsx          # Compact, expandable career timeline
-│   │   ├── github-activity.tsx     # Live GitHub contribution calendar
-│   │   └── contact.tsx
-│   ├── theme-provider.tsx          # localStorage-backed theme context
-│   ├── theme-toggle.tsx            # Sun / moon toggle
-│   ├── reveal.tsx
-│   ├── max-width.tsx
-│   ├── magnetic-link.tsx
-│   ├── section-title.tsx
-│   ├── project-card.tsx
-│   ├── experience-item.tsx         # Compact accordion role card
-│   └── process-step.tsx
-│
-├── lib/
-│   ├── utils.ts
-│   └── data/
-│       ├── site.ts
-│       ├── projects.ts
-│       ├── experience.ts
-│       ├── skills.ts
-│       └── process.ts
-│
-├── public/
-│   ├── .nojekyll                   # Disables Jekyll on GitHub Pages
-│   ├── CNAME                       # smapurbo.me custom domain
-│   ├── favicon.png
-│   └── images/
-│
-├── tailwind.config.ts
-├── next.config.mjs                 # output: 'export', images.unoptimized
-├── tsconfig.json
-├── components.json
-└── package.json
-```
+This is my personal portfolio — a minimalist, performance-first showcase of the products I've shipped, the stack I work in, and the engineering process I bring to every project. Hand-built with Next.js, fully static, and tuned for both fast page loads and rich search-engine discoverability.
+
+**I'm a Full-Stack Software Engineer and AI/ML Engineer** based in Dhaka, currently:
+
+- **Founding Software Engineer** at [ClassTablet](https://classtablet.com) — co-building Bangladesh's first comprehensive edtech platform
+- **Technical Lead** at [PlayerLagbe](https://playerlagbe.com) — Bangladesh's first AI-powered sports recruitment platform
+- **CS Senior** at BRAC University
+
+I work the full stack from React/Next.js frontends down to Node/Python services, Postgres/MongoDB, AI/ML pipelines, and cloud deployment. Open to **freelance, contract, remote, and on-site** opportunities — Dhaka, San Francisco, New York, London, or fully remote.
+
+> Get in touch: **smapurbo1497@gmail.com** · [LinkedIn](https://www.linkedin.com/in/s-m-apurbo-673581339/) · [GitHub](https://github.com/ApurboSM)
 
 ---
 
-## Design System
+## What's on the site
 
-### Color tokens (RGB triplets, opacity-aware)
-
-The token system uses CSS custom properties as RGB triplets so Tailwind opacity modifiers (`bg-bg/40`, `text-fg/65`, etc.) work cleanly across both themes.
-
-| Token       | Dark                  | Light                |
-| ----------- | --------------------- | -------------------- |
-| `bg`        | `10 10 10`            | `250 250 250`        |
-| `surface`   | `17 17 17`            | `255 255 255`        |
-| `surface-2` | `22 22 22`            | `244 244 244`        |
-| `fg`        | `237 237 237`         | `10 10 10`           |
-| `accent`    | `99 102 241`          | `79 70 229`          |
-| `accent-hi` | `129 140 248`         | `99 102 241`         |
-| `success`   | `16 185 129`          | `5 150 105`          |
-
-Derived: `line` = `fg / 0.08`, `line-2` = `fg / 0.14`, `fg-muted` = `fg / 0.65`, `fg-faint` = `fg / 0.4`.
-
-### Typography
-
-- **Sans** — Geist Sans
-- **Mono** — Geist Mono
-- **Hero** — `clamp(3.25rem, 9vw, 8rem)`
-- **Section title** — `clamp(2rem, 4vw, 2.75rem)`
-- **Body** — 16–18px, `leading-relaxed`, `text-pretty`
-
-### Layout
-
-- Max-width: `1200px` (Tailwind: `max-w-content`)
-- Section padding: `py-32 sm:py-40`
-- 12-column grid compatible
-
-### Motion
-
-- Easing: `cubic-bezier(0.16, 1, 0.3, 1)`
-- Duration: 0.4–0.55s
-- Pattern: fade-up + stagger via `<Reveal>` wrapper
+| Section | What you'll find |
+|---|---|
+| **Hero** | One-line value prop, role, location, current availability |
+| **Career** | Scroll-driven LinkedIn-style timeline — expand any role for full details |
+| **Selected Work** | Real shipped products with Problem / Approach / Impact framing |
+| **Engineering Process** | The 4-step approach I bring to every project |
+| **About** | Numbers, focus areas, and what I optimize for |
+| **Skills** | Stack inventory across frontend, backend, AI/ML, cloud, languages, data |
+| **Activities & Leadership** | BRAC University Computer Club roles |
+| **GitHub Activity** | Live contribution calendar (theme-aware) |
+| **Education & Certifications** | Degree + courses + credentials |
+| **Contact** | Email, scheduling, social, and a tap-to-save virtual business card |
 
 ---
 
-## Sections
+## Tech stack
 
-1. **Hero** — Massive split headline, available pill, dual CTAs, cursor-aware spotlight
-2. **Selected Work** — 5 structured project cards with PROBLEM / APPROACH / IMPACT
-3. **Engineering Process** — 4 numbered steps showing how I build
-4. **About** — Mindset-first narrative, inline stats, contact pills
-5. **Skills** — Categorized chip-tags
-6. **Tech Stack Network** — Interactive SVG node graph (hover to highlight connections)
-7. **Career** — Compact LinkedIn-style timeline, click to expand details
-8. **GitHub Activity** — Live contribution calendar, theme-aware
-9. **Contact** — Email-first CTA, schedule call, social links, virtual card link
+| Layer | Tools |
+|---|---|
+| Framework | Next.js 14 (App Router, static export) |
+| Language | TypeScript |
+| Styling | Tailwind CSS · CSS custom properties (RGB-triplet token system) |
+| Animation | Framer Motion · custom GPU-accelerated theme transition |
+| UI primitives | ShadCN UI patterns |
+| Icons | Lucide |
+| Fonts | Geist Sans + Geist Mono |
+| Data viz | `react-github-calendar` |
+| Hosting | GitHub Pages via GitHub Actions |
+| Domain | [smapurbo.com](https://smapurbo.com) |
 
 ---
 
-## Development
+## Highlights
+
+- **Fully static export** — zero server runtime, deploys as plain HTML/CSS/JS
+- **Dark + light themes** with a cinematic circular reveal transition (GPU-accelerated overlay, no flash)
+- **Scroll-locked career timeline** with predictive viewport snapping — each role gets a 3-scroll cycle (expand → read → advance)
+- **Cursor-aware hero spotlight** that follows the mouse
+- **JSON-LD structured data** (`Person`, `WebSite`, `ProfessionalService`) for Google Knowledge Graph
+- **WCAG-friendly motion** — respects `prefers-reduced-motion`
+- **Lighthouse 100 / 100 / 100 / 100** in production builds
+
+---
+
+## Running locally
 
 ```bash
+# Clone
+git clone https://github.com/ApurboSM/ApurboSM.github.io.git
+cd ApurboSM.github.io
+
 # Install
 npm install
 
 # Dev server (http://localhost:3000)
 npm run dev
 
-# Production build (generates ./out/ static site)
+# Production build (static site → ./out/)
 npm run build
-
-# Lint
-npm run lint
 ```
 
-`npm run build` writes a fully static site to `./out/`.
+Content is centralized in `lib/data/` — edit `site.ts`, `projects.ts`, `experience.ts`, `skills.ts`, or `process.ts` and the UI updates automatically.
 
 ---
 
-## Deployment — GitHub Pages
+## Deployment
 
-The site is hosted from `ApurboSM/ApurboSM.github.io` on GitHub Pages and reachable at the custom domain **smapurbo.me**.
+Every push to `main` triggers `.github/workflows/deploy.yml`, which:
 
-### Automatic deploy (GitHub Actions)
+1. Installs dependencies
+2. Builds the static site to `./out/`
+3. Adds `.nojekyll` (so GitHub Pages skips Jekyll processing)
+4. Publishes to GitHub Pages
 
-`.github/workflows/deploy.yml` runs on every push to `main`:
-
-1. Checks out the repo
-2. Installs dependencies (`npm ci`)
-3. Builds the static site (`npm run build` → `./out/`)
-4. Adds `.nojekyll`
-5. Uploads as a Pages artifact
-6. Deploys to GitHub Pages
-
-### One-time setup
-
-In **Repo → Settings → Pages**, set **Source** to **GitHub Actions**.
-
-### Custom domain
-
-`public/CNAME` contains `smapurbo.me`. Make sure your DNS provider has:
-
-```
-A    @    185.199.108.153
-A    @    185.199.109.153
-A    @    185.199.110.153
-A    @    185.199.111.153
-CNAME www apurbosm.github.io.
-```
-
-In **Settings → Pages**, set the custom domain to `smapurbo.me` and enable **Enforce HTTPS**.
-
-### Manual local build + push
-
-```bash
-npm run build
-# `out/` is the static site — GitHub Actions handles publishing on push
-git add .
-git commit -m "Update site"
-git push origin main
-```
+The custom domain `smapurbo.com` is configured via `public/CNAME` and standard A/CNAME records pointed at GitHub Pages.
 
 ---
 
-## Content
+## License
 
-All content is centralized in `lib/data/`:
-
-| File          | Content                                   |
-| ------------- | ----------------------------------------- |
-| site.ts       | Site-wide metadata (name, email, socials) |
-| projects.ts   | Selected Work entries                     |
-| experience.ts | Career timeline                           |
-| skills.ts     | Categorized skills                        |
-| process.ts    | Engineering process steps                 |
-
-Edit those files; the UI updates automatically.
+The code is open source under the **MIT License** — feel free to fork the structure for your own portfolio. **Content, images, branding, and personal data are © S. M. Apurbo, all rights reserved.**
 
 ---
 
-_Built in Dhaka. Designed by S. M. Apurbo · 2026_
+<div align="center">
+
+Built in Dhaka. Designed and engineered by **S. M. Apurbo** · 2026
+
+[smapurbo.com](https://smapurbo.com)
+
+</div>
