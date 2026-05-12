@@ -7,44 +7,74 @@ import { SectionTitle } from '@/components/section-title';
 import { experience } from '@/lib/data/experience';
 
 /**
- * 3-scroll-per-item state machine:
+ * Butter-smooth 3-scroll-per-item state machine
+ * ─────────────────────────────────────────────
+ *  seqRef   -1        → before sequence
+ *           0..N-1   → that item is expanded
+ *           N        → after sequence
  *
- *  seqRef   -1          → "before": no item active
- *           0..N-1      → that item is expanded
- *           N           → "after": all items done
+ *  phaseRef  0 (TOP)     → viewport at item header  ; next ↓ = show full card
+ *            1 (BOTTOM)  → viewport at card bottom  ; next ↓ = collapse + next
  *
- *  phaseRef  0 (TOP)    → viewport shows the item header; next ↓ = show bottom
- *            1 (BOTTOM) → viewport shows full details;   next ↓ = collapse+next
- *
- * Scroll DOWN per item:
- *   ↓ [1] open item    → scroll to item TOP     (phase 0)
- *   ↓ [2] full-view    → scroll to item BOTTOM  (phase 1)
- *   ↓ [3] advance      → close + open next (or exit)
- *
- * Scroll UP is symmetric:
- *   ↑ from phase 1     → scroll back to TOP     (phase 0)
- *   ↑ from phase 0     → close + open previous  (at phase 1)
+ * KEY TECHNIQUE — predictive scroll:
+ *   When advancing from item[i] to item[i+1] the collapsed height of item[i]
+ *   is estimated from a sibling in closed state.  The scroll target is
+ *   computed BEFORE any animation, so the viewport glides to the exact right
+ *   spot while the accordion opens/closes simultaneously — no waiting needed.
  */
 
-const THROTTLE_MS = 560;
-const NAV_H = 92;   // navbar height + breathing room (px)
-const ANIM_MS = 420; // accordion open/close duration + buffer
-
-const BEFORE = -1;
+const THROTTLE_MS = 360;        // min ms between transitions
+const NAV_H       = 92;         // px reserved for navbar
+const ANIM_MS     = 260;        // accordion animation duration + small buffer
+const BEFORE      = -1;
 
 export function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
   const listRef    = useRef<HTMLOListElement>(null);
   const seqRef     = useRef<number>(BEFORE);
-  const phaseRef   = useRef<number>(0);          // 0 = TOP  1 = BOTTOM
+  const phaseRef   = useRef<number>(0);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const lastWheelRef = useRef(0);
   const inViewRef    = useRef(false);
   const N = experience.length;
 
-  /* ── Scroll helper ──────────────────────────────────────────────────────
-     Reads the item's current rect AFTER `delay` ms (letting accordion
-     animation settle) and scrolls it into view.                           */
+  /* ── Helpers ──────────────────────────────────────────────────────────── */
+
+  /** Collapse-height of any closed item (reads a real sibling for accuracy). */
+  function getCollapsedHeight(excludeIdx: number): number {
+    const list = listRef.current;
+    if (!list) return 200;
+    for (let j = 0; j < N; j++) {
+      if (j !== excludeIdx && j !== seqRef.current) {
+        const h = (list.children[j] as HTMLElement)?.getBoundingClientRect().height;
+        if (h > 0) return h;
+      }
+    }
+    return 200; // fallback
+  }
+
+  /**
+   * Predictive scroll: called BEFORE React re-renders so the old DOM heights
+   * are still accurate.  We calculate where item[nextIdx] will end up once
+   * item[prevIdx] collapses and scroll there immediately.
+   */
+  function scrollPredictive(prevIdx: number, nextIdx: number) {
+    const list = listRef.current;
+    if (!list) return;
+    const prevEl = list.children[prevIdx] as HTMLElement | undefined;
+    const nextEl = list.children[nextIdx] as HTMLElement | undefined;
+    if (!prevEl || !nextEl) return;
+
+    const prevHeight   = prevEl.getBoundingClientRect().height;
+    const collapsedH   = getCollapsedHeight(prevIdx);
+    const shrinkage    = Math.max(0, prevHeight - collapsedH);
+    const nextAbsTop   = nextEl.getBoundingClientRect().top + window.scrollY;
+    const target       = nextAbsTop - shrinkage - NAV_H - 8;
+
+    window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+  }
+
+  /** Simple scroll to top or bottom of an item, after `delay` ms. */
   function scrollItem(idx: number, edge: 'top' | 'bottom', delay: number) {
     if (idx < 0 || idx >= N) return;
     setTimeout(() => {
@@ -52,7 +82,7 @@ export function Experience() {
       if (!list) return;
       const el = list.children[idx] as HTMLElement | undefined;
       if (!el) return;
-      const rect = el.getBoundingClientRect();
+      const rect   = el.getBoundingClientRect();
       const target =
         edge === 'top'
           ? rect.top  + window.scrollY - NAV_H - 8
@@ -61,54 +91,47 @@ export function Experience() {
     }, delay);
   }
 
-  /* ── Open item going FORWARD (↓): start at TOP ─────────────────────── */
-  function openForward(idx: number) {
+  /* Open going FORWARD (↓): show item top */
+  function openForward(idx: number, prevIdx?: number) {
     const active = idx >= 0 && idx < N;
-    seqRef.current  = idx;
+    seqRef.current   = idx;
     phaseRef.current = 0;
     setActiveIndex(active ? idx : null);
-    if (active) {
-      /* If this is the first item there is nothing collapsing above it,
-         so a short delay is enough.  For subsequent items we wait for the
-         previous card to finish collapsing before measuring position.     */
-      scrollItem(idx, 'top', idx === 0 ? 60 : ANIM_MS);
+
+    if (!active) return;
+    if (prevIdx !== undefined) {
+      scrollPredictive(prevIdx, idx); // instant, no delay
+    } else {
+      scrollItem(idx, 'top', 60);     // first item — short delay
     }
   }
 
-  /* ── Open item going BACKWARD (↑): start at BOTTOM ─────────────────── */
+  /* Open going BACKWARD (↑): show item bottom */
   function openBackward(idx: number) {
     const active = idx >= 0 && idx < N;
     seqRef.current   = idx;
     phaseRef.current = 1;
     setActiveIndex(active ? idx : null);
-    if (active) scrollItem(idx, 'bottom', ANIM_MS);
+    if (active) scrollItem(idx, 'bottom', ANIM_MS); // wait for accordion
   }
 
+  /* ── Effect: wheel handler + visibility ─────────────────────────────── */
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    /* ─ Visibility tracker ──────────────────────────────────────────── */
     const observer = new IntersectionObserver(
       ([entry]) => {
         inViewRef.current = entry.isIntersecting;
         if (!entry.isIntersecting) {
           const { top, bottom } = entry.boundingClientRect;
-          if (bottom <= 0) {
-            /* Scrolled entirely above → mark as after */
-            seqRef.current = N;
-            setActiveIndex(null);
-          } else if (top >= window.innerHeight) {
-            /* Entirely below → reset to before */
-            seqRef.current = BEFORE;
-            setActiveIndex(null);
-          }
+          if (bottom <= 0) { seqRef.current = N;      setActiveIndex(null); }
+          else if (top >= window.innerHeight) { seqRef.current = BEFORE; setActiveIndex(null); }
         }
       },
       { threshold: 0.05 },
     );
 
-    /* ─ Wheel handler ───────────────────────────────────────────────── */
     const handleWheel = (e: WheelEvent) => {
       if (!inViewRef.current) return;
 
@@ -118,16 +141,15 @@ export function Experience() {
       const goingDown = e.deltaY > 0;
       const inSeq     = seq >= 0 && seq < N;
 
-      /* ── DOWN ── */
       if (goingDown) {
+        /* ── Engage ── */
         if (seq === BEFORE) {
-          /* Engage when heading has crossed 60 % of viewport */
           const rect = section.getBoundingClientRect();
           if (rect.top > window.innerHeight * 0.6) return;
           e.preventDefault();
           if (now - lastWheelRef.current < THROTTLE_MS) return;
           lastWheelRef.current = now;
-          openForward(0);            // scroll [1]: expand first item
+          openForward(0);
 
         } else if (inSeq) {
           e.preventDefault();
@@ -135,31 +157,30 @@ export function Experience() {
           lastWheelRef.current = now;
 
           if (phase === 0) {
-            /* scroll [2]: show full details (scroll to item bottom) */
+            /* Show full details (bottom of card) */
             phaseRef.current = 1;
-            scrollItem(seq, 'bottom', ANIM_MS); // accordion finishes opening first
+            scrollItem(seq, 'bottom', ANIM_MS);
 
           } else {
-            /* scroll [3]: collapse + advance */
+            /* Collapse + advance */
             if (seq < N - 1) {
-              openForward(seq + 1);
+              openForward(seq + 1, seq); // predictive — no delay
             } else {
-              seqRef.current = N;   // exit sequence
+              seqRef.current = N;
               setActiveIndex(null);
             }
           }
         }
-        /* seq === N: past sequence — normal scroll */
+        /* seq === N → normal scroll */
 
-      /* ── UP ── */
-      } else {
+      } else { /* UP */
         if (seq === N) {
           const rect = section.getBoundingClientRect();
           if (rect.bottom < window.innerHeight * 0.4) return;
           e.preventDefault();
           if (now - lastWheelRef.current < THROTTLE_MS) return;
           lastWheelRef.current = now;
-          openBackward(N - 1);     // re-enter from end, show last item bottom
+          openBackward(N - 1);
 
         } else if (inSeq) {
           e.preventDefault();
@@ -167,12 +188,9 @@ export function Experience() {
           lastWheelRef.current = now;
 
           if (phase === 1) {
-            /* scroll [2] reversed: back to item top */
             phaseRef.current = 0;
-            scrollItem(seq, 'top', 50); // no accordion change, near-instant
-
+            scrollItem(seq, 'top', 30); // no accordion change → near-instant
           } else {
-            /* scroll [1] reversed: close + go to previous */
             if (seq > 0) {
               openBackward(seq - 1);
             } else {
@@ -181,13 +199,12 @@ export function Experience() {
             }
           }
         }
-        /* seq === BEFORE: before sequence — normal scroll */
+        /* seq === BEFORE → normal scroll */
       }
     };
 
     observer.observe(section);
     window.addEventListener('wheel', handleWheel, { passive: false });
-
     return () => {
       observer.disconnect();
       window.removeEventListener('wheel', handleWheel);
@@ -195,6 +212,7 @@ export function Experience() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /* ── Render ──────────────────────────────────────────────────────────── */
   return (
     <section
       ref={sectionRef}
@@ -219,7 +237,7 @@ export function Experience() {
               isOpen={activeIndex === i}
               onToggle={() => {
                 const next = seqRef.current === i ? BEFORE : i;
-                seqRef.current  = next;
+                seqRef.current   = next;
                 phaseRef.current = 0;
                 setActiveIndex(next >= 0 && next < N ? next : null);
                 if (next >= 0 && next < N) scrollItem(next, 'top', 60);
@@ -228,7 +246,6 @@ export function Experience() {
           ))}
         </ol>
 
-        {/* Progress dots */}
         {activeIndex !== null && (
           <div className="mx-auto mt-8 flex max-w-3xl items-center justify-center gap-1.5">
             {experience.map((_, i) => (

@@ -172,7 +172,7 @@ export function ExperienceItem({
             height: isOpen ? 'auto' : 0,
             opacity: isOpen ? 1 : 0,
           }}
-          transition={{ duration: 0.4, ease }}
+          transition={{ duration: 0.25, ease }}
           className="overflow-hidden"
         >
           <div className="space-y-5 border-t border-line p-5 sm:p-6">

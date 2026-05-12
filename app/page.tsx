@@ -4,7 +4,6 @@ import { SelectedWork } from '@/components/sections/selected-work';
 import { EngineeringProcess } from '@/components/sections/engineering-process';
 import { About } from '@/components/sections/about';
 import { Skills } from '@/components/sections/skills';
-import { TechNetwork } from '@/components/sections/tech-network';
 import { Activities } from '@/components/sections/activities';
 import { GithubActivity } from '@/components/sections/github-activity';
 import { Education } from '@/components/sections/education';
@@ -19,7 +18,6 @@ export default function HomePage() {
       <EngineeringProcess />
       <About />
       <Skills />
-      <TechNetwork />
       <Activities />
       <GithubActivity />
       <Education />
