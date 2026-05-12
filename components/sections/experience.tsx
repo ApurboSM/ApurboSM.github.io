@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { MaxWidth } from '@/components/max-width';
 import { ExperienceItem } from '@/components/experience-item';
 import { SectionTitle } from '@/components/section-title';
@@ -13,33 +13,50 @@ import { experience } from '@/lib/data/experience';
  *   seq = 0..N-1   → item[seq] is expanded
  *   seq = N         → "after": all items cycled, scroll released downward
  *
- * Scroll DOWN:
- *   -1 → 0           (engage: open first)
- *    i → i+1          (advance)
- *   N-1 → N           (exit at bottom, don't lock)
- *
- * Scroll UP:
- *    N → N-1          (re-engage from end)
- *    i → i-1          (retreat)
- *    0 → -1           (exit at top, don't lock)
+ * Each transition scrolls the active item into the viewport so it is
+ * always fully visible (Apple-style sticky-feel without CSS sticky).
  */
 
-const THROTTLE_MS = 480;
+const THROTTLE_MS = 520;
+const NAV_H = 88; // navbar + breathing room
 const BEFORE = -1;
 
 export function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
+  const listRef = useRef<HTMLOListElement>(null);
   const seqRef = useRef<number>(BEFORE);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const lastWheelRef = useRef(0);
   const inViewRef = useRef(false);
   const N = experience.length;
 
-  /** Update both the ref (for sync reads inside wheel handler) and state (for React render) */
-  function setSeq(idx: number) {
-    seqRef.current = idx;
-    setActiveIndex(idx >= 0 && idx < N ? idx : null);
-  }
+  /** Smoothly scroll the list item at `idx` so it sits just below the navbar. */
+  const scrollToItem = useCallback(
+    (idx: number) => {
+      if (idx < 0 || idx >= N) return;
+      // Wait briefly for React to commit the state change before reading layout
+      setTimeout(() => {
+        const list = listRef.current;
+        if (!list) return;
+        const item = list.children[idx] as HTMLElement | undefined;
+        if (!item) return;
+        const top = item.getBoundingClientRect().top + window.scrollY - NAV_H;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }, 60);
+    },
+    [N],
+  );
+
+  /** Update ref (sync reads inside wheel handler) + state (React render) + viewport. */
+  const setSeq = useCallback(
+    (idx: number) => {
+      seqRef.current = idx;
+      const next = idx >= 0 && idx < N ? idx : null;
+      setActiveIndex(next);
+      if (next !== null) scrollToItem(next);
+    },
+    [N, scrollToItem],
+  );
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -52,11 +69,9 @@ export function Experience() {
         if (!entry.isIntersecting) {
           const { top, bottom } = entry.boundingClientRect;
           if (bottom <= 0) {
-            /* Section scrolled entirely above viewport → mark as "after" */
             seqRef.current = N;
             setActiveIndex(null);
           } else if (top >= window.innerHeight) {
-            /* Section is entirely below viewport → reset to "before" */
             seqRef.current = BEFORE;
             setActiveIndex(null);
           }
@@ -77,35 +92,27 @@ export function Experience() {
       /* ── Scrolling DOWN ── */
       if (goingDown) {
         if (seq === BEFORE) {
-          /* Only engage once the section heading has scrolled into the upper viewport */
+          /* Engage when the section heading has crossed 60 % of the viewport */
           const rect = section.getBoundingClientRect();
           if (rect.top > window.innerHeight * 0.6) return;
 
-          /* Lock and open first item */
           e.preventDefault();
           if (now - lastWheelRef.current < THROTTLE_MS) return;
           lastWheelRef.current = now;
           setSeq(0);
 
         } else if (inSequence) {
-          /* Advance to next item, or exit if on last */
           e.preventDefault();
           if (now - lastWheelRef.current < THROTTLE_MS) return;
           lastWheelRef.current = now;
-
-          if (seq < N - 1) {
-            setSeq(seq + 1);
-          } else {
-            /* Last item → release scroll downward */
-            setSeq(N);
-          }
+          setSeq(seq < N - 1 ? seq + 1 : N); // N = exit sequence
         }
-        /* seq === N: past sequence, let scroll flow normally */
+        /* seq === N: past sequence — scroll flows normally */
 
       /* ── Scrolling UP ── */
       } else {
         if (seq === N) {
-          /* Re-engage from the bottom when user scrolls back up */
+          /* Re-engage from the end when scrolling back up */
           const rect = section.getBoundingClientRect();
           if (rect.bottom < window.innerHeight * 0.4) return;
 
@@ -115,19 +122,12 @@ export function Experience() {
           setSeq(N - 1);
 
         } else if (inSequence) {
-          /* Go back to previous item, or exit if on first */
           e.preventDefault();
           if (now - lastWheelRef.current < THROTTLE_MS) return;
           lastWheelRef.current = now;
-
-          if (seq > 0) {
-            setSeq(seq - 1);
-          } else {
-            /* First item → release scroll upward */
-            setSeq(BEFORE);
-          }
+          setSeq(seq > 0 ? seq - 1 : BEFORE); // BEFORE = exit sequence
         }
-        /* seq === BEFORE: before sequence, let scroll flow normally */
+        /* seq === BEFORE: before sequence — scroll flows normally */
       }
     };
 
@@ -138,8 +138,7 @@ export function Experience() {
       observer.disconnect();
       window.removeEventListener('wheel', handleWheel);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [N, setSeq]);
 
   return (
     <section
@@ -155,7 +154,7 @@ export function Experience() {
           description="Scroll to step through each role — or click any card to open it directly."
         />
 
-        <ol className="mx-auto max-w-3xl space-y-2.5">
+        <ol ref={listRef} className="mx-auto max-w-3xl space-y-2.5">
           {experience.map((item, i) => (
             <ExperienceItem
               key={item.company}
@@ -168,7 +167,7 @@ export function Experience() {
           ))}
         </ol>
 
-        {/* Step progress indicator — visible while in sequence */}
+        {/* Step progress dots — visible while sequence is active */}
         {activeIndex !== null && (
           <div className="mx-auto mt-8 flex max-w-3xl items-center justify-center gap-1.5">
             {experience.map((_, i) => (
