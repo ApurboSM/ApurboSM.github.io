@@ -10,7 +10,7 @@ import { site } from '@/lib/data/site';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const heroLines = ['SHIP PRODUCTS,', 'NOT PROMISES.'];
+const heroLines = ['SHIP PRODUCTS,', 'NOT PROMISES'];
 
 export function Hero() {
   const wrapRef = useRef<HTMLElement>(null);
@@ -67,7 +67,7 @@ export function Hero() {
             </motion.div>
 
             {/* Headline */}
-            <h1 className="font-sans font-semibold leading-[0.92] tracking-tightest-2 text-balance text-[clamp(2.2rem,8vw,5.25rem)] sm:text-[clamp(2.6rem,7vw,5.25rem)] lg:text-[clamp(2.4rem,4.5vw,5.25rem)]">
+            <h1 className="font-sans font-semibold leading-[0.92] tracking-tightest-2 text-balance text-[clamp(2.6rem,9vw,5.75rem)] sm:text-[clamp(3rem,8vw,5.75rem)] lg:text-[clamp(3rem,5.5vw,5.75rem)]">
               {heroLines.map((line, i) => (
                 <span key={i} className="block" style={{ paddingBottom: '0.05em' }}>
                   <SplitWords
@@ -273,7 +273,7 @@ function SplitWords({
             {isLast && accent && (
               <motion.span
                 initial={{ y: -900 }}
-                animate={{ y: -8 }}
+                animate={{ y: -12 }}
                 transition={{
                   type: 'spring',
                   stiffness: 260,
