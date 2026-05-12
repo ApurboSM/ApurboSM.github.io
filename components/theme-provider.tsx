@@ -6,8 +6,7 @@ type Theme = 'dark' | 'light';
 
 type ThemeContextValue = {
   theme: Theme;
-  /** Pass the click MouseEvent so the reveal can originate from the button. */
-  toggle: (e?: React.MouseEvent) => void;
+  toggle: () => void;
   setTheme: (t: Theme) => void;
 };
 
@@ -39,59 +38,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const toggle = React.useCallback(
-    (e?: React.MouseEvent) => {
-      const next: Theme = theme === 'dark' ? 'light' : 'dark';
-
-      /* Compute click origin (button center) for the circle animation */
-      const rect = (e?.currentTarget as HTMLElement | undefined)?.getBoundingClientRect();
-      const originX = rect ? rect.left + rect.width  / 2 : window.innerWidth  / 2;
-      const originY = rect ? rect.top  + rect.height / 2 : window.innerHeight / 2;
-
-      applyTheme(next, originX, originY);
-      setThemeState(next);
-      try { localStorage.setItem(STORAGE_KEY, next); } catch { /* ignore */ }
-    },
-    [theme],
-  );
+  const toggle = React.useCallback(() => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  }, [theme, setTheme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggle, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-}
-
-/**
- * Applies theme using the View Transitions API (Chrome 111+) for a cinematic
- * circular reveal expanding from `(x, y)`.  Falls back to a CSS cross-fade
- * for browsers that don't support startViewTransition.
- */
-function applyTheme(theme: Theme, x: number, y: number) {
-  const root = document.documentElement;
-
-  /* Store origin as CSS custom properties for the clip-path animation */
-  root.style.setProperty('--vt-x', `${x}px`);
-  root.style.setProperty('--vt-y', `${y}px`);
-
-  const vt = (document as Document & {
-    startViewTransition?: (cb: () => void) => { ready: Promise<void> };
-  }).startViewTransition;
-
-  const reducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (vt && !reducedMotion) {
-    vt.call(document, () => {
-      root.setAttribute('data-theme', theme);
-    });
-  } else {
-    /* CSS-only fallback */
-    root.setAttribute('data-theme', theme);
-    root.classList.add('theme-transition');
-    window.setTimeout(() => root.classList.remove('theme-transition'), 500);
-  }
 }
 
 export function useTheme() {
