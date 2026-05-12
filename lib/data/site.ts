@@ -8,7 +8,7 @@ export const site = {
   location: 'Dhaka, Bangladesh',
   email: 'smapurbo1497@gmail.com',
   phone: '+8801311035024',
-  url: 'https://smapurbo.me',
+  url: 'https://smapurbo.com',
   socials: {
     github: 'https://github.com/ApurboSM',
     linkedin: 'https://www.linkedin.com/in/s-m-apurbo-673581339/',

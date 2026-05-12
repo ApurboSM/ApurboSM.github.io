@@ -215,7 +215,7 @@ export function CardClient() {
                         href={site.url}
                         className="mt-1 inline-flex items-center gap-1 text-sm text-fg transition-colors hover:text-accent-hi"
                       >
-                        smapurbo.me
+                        smapurbo.com
                         <ArrowUpRight className="h-3 w-3" />
                       </a>
                     </div>
