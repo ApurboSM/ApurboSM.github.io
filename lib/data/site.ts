@@ -7,7 +7,7 @@ export const site = {
     'Full-Stack Software Engineer & AI/ML Engineer · MERN Developer · Founding Engineer',
   tagline: 'Founding Software Engineer at ClassTablet',
   description:
-    'S. M. Apurbo — Full-Stack Software Engineer, AI/ML Engineer, and MERN-stack developer based in Dhaka, Bangladesh. Founding Software Engineer at ClassTablet, Technical Lead at PlayerLagbe. Available worldwide for freelance, remote, and on-site roles across Dhaka, Bangladesh, San Francisco, New York, London, and beyond.',
+    'S M Apurbo is a software engineer, full-stack developer, MERN stack developer, and AI/ML engineer building modern web apps, backend systems, and intelligent products.',
   location: 'Dhaka, Bangladesh',
   geo: {
     locality: 'Dhaka',

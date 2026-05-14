@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line bg-bg">
       <div className="mx-auto w-full max-w-content px-6 py-16 sm:px-8 lg:px-12">
-        {/* Big sign-off */}
+        {/* ── Big sign-off ─────────────────────────────────────────── */}
         <div className="grid gap-12 md:grid-cols-[1.5fr_1fr] md:gap-16">
           <div>
             <h2 className="text-balance font-sans text-4xl font-medium leading-[1.05] tracking-tight text-fg sm:text-5xl md:text-6xl">
@@ -24,17 +24,44 @@ export function Footer() {
             >
               {site.email}
             </a>
+            <p className="mt-6 max-w-md text-pretty text-[13.5px] leading-relaxed text-fg-faint">
+              Software engineer · Full-stack developer · AI / ML engineer.
+              Based in Dhaka, Bangladesh — working with teams worldwide.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             <FooterCol title="Sitemap">
               <Link href="/" className="footer-link">Home</Link>
-              <a href="#work" className="footer-link">Work</a>
-              <a href="#process" className="footer-link">Process</a>
-              <a href="#about" className="footer-link">About</a>
-              <a href="#experience" className="footer-link">Career</a>
-              <a href="#contact" className="footer-link">Contact</a>
-              <Link href="/card" className="footer-link">Card</Link>
+              <Link href="/about/" className="footer-link">About</Link>
+              <Link href="/projects/" className="footer-link">Projects</Link>
+              <Link href="/card/" className="footer-link">Card</Link>
+              <Link href="/#experience" className="footer-link">Career</Link>
+              <Link href="/#contact" className="footer-link">Contact</Link>
+            </FooterCol>
+
+            <FooterCol title="Services">
+              <Link href="/services/full-stack-developer/" className="footer-link">
+                Full-Stack Dev
+              </Link>
+              <Link href="/services/mern-stack-developer/" className="footer-link">
+                MERN Stack
+              </Link>
+              <Link href="/services/ai-ml-engineer/" className="footer-link">
+                AI / ML Engineer
+              </Link>
+              <Link
+                href="/location/dhaka-full-stack-developer/"
+                className="footer-link"
+              >
+                Dhaka Developer
+              </Link>
+              <Link
+                href="/location/bangladesh-software-engineer/"
+                className="footer-link"
+              >
+                Bangladesh SWE
+              </Link>
             </FooterCol>
 
             <FooterCol title="Connect">
@@ -77,7 +104,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom row */}
+        {/* ── Bottom row ───────────────────────────────────────────── */}
         <div className="mt-16 flex flex-col-reverse items-start justify-between gap-6 border-t border-line pt-8 text-fg-faint sm:flex-row sm:items-center">
           <div className="font-mono text-[11px] uppercase tracking-[0.16em]">
             © {year} {site.name} · Built in Dhaka
