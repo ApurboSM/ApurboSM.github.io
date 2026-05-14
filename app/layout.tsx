@@ -23,7 +23,7 @@ import { site } from '@/lib/data/site';
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Full-Stack Software Engineer · AI/ML Engineer`,
+    default: 'S M Apurbo | Software Engineer, Full-Stack & AI/ML Developer',
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -135,20 +135,20 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: site.url,
     siteName: `${site.name} — Portfolio`,
-    title: `${site.name} — Full-Stack Software Engineer · AI/ML Engineer`,
+    title: 'S M Apurbo | Software Engineer, Full-Stack & AI/ML Developer',
     description: site.description,
     images: [
       {
         url: site.ogImage,
         width: 1200,
         height: 630,
-        alt: `${site.name} — Full-Stack Software Engineer & AI/ML Engineer`,
+        alt: 'S M Apurbo — Software Engineer, Full-Stack & AI/ML Developer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.name} — Full-Stack Software Engineer · AI/ML Engineer`,
+    title: 'S M Apurbo | Software Engineer, Full-Stack & AI/ML Developer',
     description: site.description,
     images: [site.ogImage],
     creator: '@smapurbo',

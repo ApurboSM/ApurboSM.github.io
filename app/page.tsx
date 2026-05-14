@@ -1,5 +1,6 @@
 import { Hero } from '@/components/sections/hero';
 import { Experience } from '@/components/sections/experience';
+import { WhatIBuild } from '@/components/sections/what-i-build';
 import { SelectedWork } from '@/components/sections/selected-work';
 import { EngineeringProcess } from '@/components/sections/engineering-process';
 import { About } from '@/components/sections/about';
@@ -14,6 +15,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Experience />
+      <WhatIBuild />
       <SelectedWork />
       <EngineeringProcess />
       <About />
